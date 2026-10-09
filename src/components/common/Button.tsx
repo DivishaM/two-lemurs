@@ -56,7 +56,12 @@ export const Button: React.FC<ButtonProps> = ({
     const iconSize = size === 'sm' ? 14 : size === 'lg' ? 18 : 16;
 
     if (icon === 'arrow-up-right') {
-      return <ArrowUpRight size={iconSize} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />;
+      return (
+        <ArrowUpRight
+          size={iconSize}
+          className="transition-transform duration-300 group-hover:rotate-45"
+        />
+      );
     }
     if (icon === 'arrow-down-right') {
       return <ArrowDownRight size={iconSize} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />;
