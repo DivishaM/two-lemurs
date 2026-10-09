@@ -27,7 +27,6 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'md',
   ...props
 }) => {
-  // Variant styles mapped to global design tokens
   const variantStyles: Record<ButtonVariant, string> = {
     primary:
       'bg-primary hover:bg-primary-hover text-white shadow-sm border border-transparent',
@@ -41,7 +40,6 @@ export const Button: React.FC<ButtonProps> = ({
       'bg-transparent hover:bg-gray-100 text-typography-main border-transparent',
   };
 
-  // Sizing styles
   const sizeStyles: Record<'sm' | 'md' | 'lg', string> = {
     sm: 'px-3.5 py-1.5 text-xs gap-1.5 rounded-md font-medium',
     md: 'px-5 py-2.5 text-sm gap-2 rounded-lg font-medium',
@@ -53,7 +51,6 @@ export const Button: React.FC<ButtonProps> = ({
 
   const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim();
 
-  // Render icon
   const renderIcon = () => {
     if (!icon) return null;
     const iconSize = size === 'sm' ? 14 : size === 'lg' ? 18 : 16;

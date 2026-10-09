@@ -17,12 +17,10 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white border-b border-surface-border">
       <div className="container flex items-center justify-between h-16">
 
-        {/* Logo */}
         <a href="/" className="flex-shrink-0">
           <img src={LogoSvg} alt="Two Lemurs" className="h-5 w-auto" />
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
