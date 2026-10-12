@@ -1,12 +1,11 @@
 import { ArrowUpRight } from "lucide-react";
 import InsightCard from "./InsightCard";
-import { insightsData } from "../../data/insightsData";
-import Container from "../common/Container";
+import { insightsData } from "../../../data/insightsData";
 
 export default function InsightsSection() {
   return (
     <section className="bg-[#FAFAFA] py-16 md:py-24">
-      <Container>
+      <div className="container">
         {/* Section Heading */}
         <div className="mb-10 flex items-center justify-between gap-4">
           <h2 className="text-[28px] font-extrabold leading-[36px] text-[#000912] md:text-[48px] md:leading-[58px]">
@@ -28,7 +27,7 @@ export default function InsightsSection() {
             <InsightCard key={insight.id} insight={insight} />
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

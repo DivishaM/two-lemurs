@@ -1,12 +1,11 @@
-import Container from "../common/Container";
-import Button from "../common/Button";
+import Button from "../../common/Button";
 import ProcessStep from "./ProcessStep";
-import { processData } from "../../data/processData";
+import { processData } from "../../../data/processData";
 
 export default function ProcessSection() {
     return (
-        <section className="bg-white px-5  py-32 md:px-5 md:py-24">
-            <Container>
+        <section className="bg-white py-20 md:py-24">
+            <div className="container">
                 {/* Section Heading */}
                 <div className="mb-10 grid gap-6 md:grid-cols-2 md:items-end lg:mb-12">
 
@@ -31,7 +30,6 @@ export default function ProcessSection() {
                 </div>
 
                 {/* CTA Banner */}
-
                 <div className="mt-3 flex flex-col gap-5 border border-[#D9DBDD] bg-white p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-4">
                     <div>
                         <p className="text-[14px] md:text-[16px] font-normal leading-5 text-[#68727D]">
@@ -43,7 +41,6 @@ export default function ProcessSection() {
                         </p>
                     </div>
 
-
                     <Button
                         label="Start a Project"
                         variant="primary"
@@ -51,7 +48,7 @@ export default function ProcessSection() {
                         icon="arrow-up-right"
                     />
                 </div>
-            </Container>
+            </div>
         </section>
     );
 }

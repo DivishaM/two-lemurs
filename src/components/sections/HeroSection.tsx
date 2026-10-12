@@ -1,43 +1,47 @@
-import { Button } from '../common/Button';
+import { Button } from "../common/Button";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#FAFBFC] min-h-[auto] lg:min-h-[740px] xl:min-h-[800px] flex flex-col justify-end">
-      
-      <div className="hidden lg:block absolute inset-0 pointer-events-none select-none z-0">
+    <section className="relative flex flex-col overflow-hidden bg-gray-50 lg:min-h-[700px]">
+
+      {/* Desktop Hero Image */}
+      <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
         <img
           src="/images/hero-image.png"
           alt="Two Lemurs Hero Graphic"
-          className="w-full h-full object-cover object-right"
+          className="h-full w-full object-cover object-right"
         />
       </div>
 
-      <div className="lg:hidden w-full h-[340px] sm:h-[400px] md:h-[460px] overflow-hidden relative flex items-center justify-center">
+      {/* Mobile Hero Image */}
+      <div className="relative flex h-[300px] items-center justify-center overflow-hidden sm:h-[360px] lg:hidden">
         <img
           src="/images/hero-image.png"
           alt="Two Lemurs Hero Graphic"
-          className="absolute w-[580px] sm:w-[680px] md:w-[780px] max-w-none h-auto -translate-x-[27%] pointer-events-none select-none"
+          className="pointer-events-none h-auto w-[520px] max-w-none -translate-x-[12%] sm:w-[620px]"
         />
       </div>
 
-      <div className="container relative z-10 pt-2 pb-12 sm:pb-16 lg:pb-24">
-        <div className="max-w-xl lg:max-w-2xl flex flex-col gap-5 sm:gap-6">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-extrabold text-typography-main tracking-tight leading-[1.12]">
+      <div className="container relative z-10 mt-auto pb-10 pt-2 sm:pb-12 lg:pb-16 xl:pb-20">
+        <div className="flex max-w-xl flex-col gap-4 sm:gap-5 lg:gap-6">
+
+          <h1 className="gothic-800 text-3xl leading-tight tracking-tight text-typography-main sm:text-4xl md:text-5xl lg:text-6xl">
             Build what&apos;s next for your business.
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg text-typography-muted max-w-lg leading-relaxed">
-            We turn ideas into practical solutions across branding, websites and
-            digital products – combining strategy, design and technology.
+          <p className="max-w-lg text-sm leading-relaxed text-slate-700 sm:text-base">
+            We turn ideas into practical solutions across branding, websites
+            and digital products – combining strategy, design and technology.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-3 pt-1">
             <Button
               label="Start a Project"
               variant="primary"
               icon="arrow-up-right"
               size="md"
             />
+
             <Button
               label="View our work"
               variant="secondary"
@@ -45,6 +49,7 @@ export default function HeroSection() {
               size="md"
             />
           </div>
+
         </div>
       </div>
     </section>

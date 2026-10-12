@@ -1,6 +1,5 @@
-
 import { ChevronDown, Plus } from "lucide-react";
-import type { FAQ } from "../../data/faqData";
+import type { FAQ } from "../../../data/faqData";
 
 interface FAQItemProps {
     item: FAQ;

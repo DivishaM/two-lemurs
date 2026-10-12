@@ -1,15 +1,13 @@
-
 import { useState } from "react";
 import FAQItem from "./FAQItem";
-import { faqData } from "../../data/faqData";
-import Container from "../common/Container";
+import { faqData } from "../../../data/faqData";
 
 export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section className="bg-[#FAFAFA] px-5 py-16 md:px-5 md:py-24 lg:px-0">
-            <Container>
+        <section id="faq" className="bg-[#FAFAFA] py-16 md:py-24">
+            <div className="container">
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
                     {/* Left Content */}
                     <div>
@@ -41,7 +39,7 @@ export default function FAQSection() {
                         ))}
                     </div>
                 </div>
-            </Container>
+            </div>
         </section>
     );
 }

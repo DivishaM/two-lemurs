@@ -1,5 +1,5 @@
 import MarqueeItem from "./MarqueeItem";
-import { servicesData } from "../../data/servicesData";
+import { servicesData } from "../../../data/servicesData";
 
 export default function ServicesMarquee() {
   return (

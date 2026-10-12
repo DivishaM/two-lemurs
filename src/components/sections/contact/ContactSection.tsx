@@ -3,8 +3,8 @@ import { Phone, Mail } from "lucide-react";
 
 export default function ContactSection() {
   return (
-    <section className="bg-[#000912] px-6 py-16 text-white md:px-10 md:py-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+    <section className="bg-[#000912] py-16 text-white md:py-24">
+      <div className="container grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
 
         {/* Left Content */}
         <div>
@@ -23,7 +23,6 @@ export default function ContactSection() {
             <p className="text-[14px] font-medium leading-[20px] text-white md:text-[18px] md:leading-[28px]">
               Prefer speaking with our team directly?
             </p>
-
 
             <div className="mt-5 flex flex-wrap gap-6">
               <a

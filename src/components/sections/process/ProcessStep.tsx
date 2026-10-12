@@ -1,4 +1,4 @@
-import type { ProcessStepData } from "../../data/processData";
+import type { ProcessStepData } from "../../../data/processData";
 
 interface ProcessStepProps {
     step: ProcessStepData;

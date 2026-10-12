@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import type { Insight } from "../../data/insightsData";
+import type { Insight } from "../../../data/insightsData";
 
 interface InsightCardProps {
   insight: Insight;
@@ -12,6 +12,7 @@ export default function InsightCard({ insight }: InsightCardProps) {
         <img
           src={insight.image}
           alt={insight.title}
+          
           className="aspect-[4/3] w-full object-contain transition-transform duration-700 ease-out hover:scale-110"
         />
       </div>
