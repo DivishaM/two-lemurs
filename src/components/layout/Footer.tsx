@@ -21,7 +21,7 @@ const serviceLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 pb-4 sm:pb-8 overflow-hidden">
+    <footer className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 sm:pb-[240px] overflow-hidden relative">
       <div className="container">
 
         {/* Top Header Row: Logo & Socials */}
@@ -31,11 +31,11 @@ export default function Footer() {
               <img
                 src="/assets/Logo.svg"
                 alt="Two Lemurs"
-                className="h-6 w-auto brightness-0 invert"
+                className="h-8 w-auto brightness-0 invert"
               />
             </a>
             {/* Mobile Tagline (shows directly below logo on mobile) */}
-            <p className="lg:hidden text-sm avenir-400 text-slate-400 leading-relaxed max-w-sm">
+            <p className="lg:hidden text-base avenir-500 text-slate-400 leading-relaxed max-w-sm">
               Helping growing businesses solve the problems growth creates.
             </p>
           </div>
@@ -47,9 +47,13 @@ export default function Footer() {
                 key={social.name}
                 href={social.href}
                 aria-label={social.name}
-                className="flex size-10 items-center justify-center border border-white/10 transition-colors duration-200 hover:bg-white/10"
+                className="group flex size-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-white/30 hover:bg-white/10"
               >
-                <img src={social.icon} alt={social.name} className="size-4" />
+                <img
+                  src={social.icon}
+                  alt={social.name}
+                  className="size-4 transition-transform duration-300 group-hover:-rotate-12"
+                />
               </a>
             ))}
           </div>
@@ -63,17 +67,17 @@ export default function Footer() {
 
           {/* Column 1: Desktop Tagline */}
           <div className="hidden lg:block">
-            <p className="text-sm avenir-400 text-slate-400 leading-relaxed max-w-xs">
+            <p className="text-base avenir-500 text-slate-400 leading-relaxed max-w-xs">
               Helping growing businesses solve the problems growth creates.
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
           <div>
-            <h4 className="gothic-700 text-base text-white mb-4">
+            <h4 className="avenir-600 text-base text-white mb-4">
               Quick Links
             </h4>
-            <ul className="flex flex-col gap-2.5 text-sm avenir-400 text-slate-400">
+            <ul className="flex flex-col gap-2.5 text-sm avenir-500 text-slate-400">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <a
@@ -81,8 +85,8 @@ export default function Footer() {
                     className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                   >
                     <span>{link.label}</span>
-                    <span className="flex size-6 shrink-0 items-center justify-center border border-white/20 bg-white/5 text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
-                      <ArrowUpRight size={13} />
+                    <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                      <ArrowUpRight size={16} />
                     </span>
                   </a>
                 </li>
@@ -92,10 +96,10 @@ export default function Footer() {
 
           {/* Column 3: Services */}
           <div>
-            <h4 className="gothic-700 text-base text-white mb-4">
+            <h4 className="avenir-600 text-base text-white mb-4">
               Services
             </h4>
-            <ul className="flex flex-col gap-2.5 text-sm avenir-400 text-slate-400">
+            <ul className="flex flex-col gap-2.5 text-sm avenir-500 text-slate-400">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
                   <a
@@ -103,8 +107,8 @@ export default function Footer() {
                     className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                   >
                     <span>{link.label}</span>
-                    <span className="flex size-6 shrink-0 items-center justify-center border border-white/20 bg-white/5 text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
-                      <ArrowUpRight size={13} />
+                    <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                      <ArrowUpRight size={16} />
                     </span>
                   </a>
                 </li>
@@ -114,31 +118,53 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div className="col-span-2 lg:col-span-1">
-            <h4 className="gothic-700 text-base text-white mb-4">
+            <h4 className="avenir-600 text-base text-white mb-4">
               Contact
             </h4>
-            <ul className="flex flex-col gap-3.5 text-sm avenir-400 text-slate-400">
+            <ul className="flex flex-col gap-2.5 text-sm avenir-500 text-slate-400">
               <li>
                 <a
                   href="tel:+61255503559"
-                  className="flex items-center gap-2.5 transition-colors hover:text-white"
+                  className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
-                  <Phone size={14} className="shrink-0 text-slate-400" />
-                  <span>+61 255 503 559</span>
+                  <div className="flex items-center gap-2.5">
+                    <Phone size={14} className="shrink-0 text-slate-400" />
+                    <span>+61 255 503 559</span>
+                  </div>
+                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                    <ArrowUpRight size={16} />
+                  </span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:info@twolemurs.com"
-                  className="flex items-center gap-2.5 transition-colors hover:text-white"
+                  className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
-                  <Mail size={14} className="shrink-0 text-slate-400" />
-                  <span>info@twolemurs.com</span>
+                  <div className="flex items-center gap-2.5">
+                    <Mail size={14} className="shrink-0 text-slate-400" />
+                    <span>info@twolemurs.com</span>
+                  </div>
+                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                    <ArrowUpRight size={16} />
+                  </span>
                 </a>
               </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin size={14} className="shrink-0 mt-0.5 text-slate-400" />
-                <span>123 Demo Street, Richmond VIC 3121, Australia</span>
+              <li>
+                <a
+                  href="https://maps.google.com/?q=123+Demo+Street,+Richmond+VIC+3121,+Australia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
+                >
+                  <div className="flex items-start gap-2.5">
+                    <MapPin size={14} className="shrink-0 mt-0.5 text-slate-400" />
+                    <span>123 Demo Street, Richmond VIC 3121, Australia</span>
+                  </div>
+                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                    <ArrowUpRight size={16} />
+                  </span>
+                </a>
               </li>
             </ul>
           </div>
@@ -149,25 +175,37 @@ export default function Footer() {
         <div className="my-10 sm:my-12 border-t border-white/10" />
 
         {/* Copyright & Legal Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 avenir-400">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 avenir-500">
           <p>© 2026 Two Lemurs. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#privacy" className="transition-colors hover:text-white">
-              Privacy Policy
+          <div className="avenir-500 flex items-center gap-6 text-sm">
+            <a
+              href="#privacy"
+              className="group inline-flex items-center gap-1 border-b border-transparent pb-0.5 transition-all duration-200 hover:border-white/20 hover:text-white"
+            >
+              <span>Privacy Policy</span>
+              <ArrowUpRight
+                size={14}
+                className="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+              />
             </a>
-            <a href="#terms" className="transition-colors hover:text-white">
-              Terms of Service
+            <a
+              href="#terms"
+              className="group inline-flex items-center gap-1 border-b border-transparent pb-0.5 transition-all duration-200 hover:border-white/20 hover:text-white"
+            >
+              <span>Terms of Service</span>
+              <ArrowUpRight
+                size={14}
+                className="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+              />
             </a>
           </div>
         </div>
 
         {/* Giant Bottom Brand Logo */}
-        <div className="mt-12 sm:mt-16 w-full flex justify-center overflow-hidden">
-          <img
-            src="/images/footer-logo.png"
-            alt="Two Lemurs"
-            className="w-full object-contain pointer-events-none select-none max-w-full opacity-95"
-          />
+        <div className="flex justify-center overflow-hidden pointer-events-none select-none">
+          <div className="gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-[0.88] text-white absolute bottom-[-4px] sm:bottom-[-16px] whitespace-nowrap text-center">
+            Two Lemurs
+          </div>
         </div>
 
       </div>
