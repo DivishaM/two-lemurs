@@ -6,20 +6,20 @@ interface ProcessStepProps {
 
 export default function ProcessStep({ step }: ProcessStepProps) {
     return (
-        <article className="group relative flex h-[391px] flex-col overflow-hidden border border-[#D9DBDD] bg-white p-5 sm:p-6">
+        <article className="group relative flex flex-col overflow-hidden border-l border-t border-b border-neutral-100 bg-white p-5 sm:p-[30px] cursor-pointer">
             {/* Animated background */}
-            <div className="absolute inset-0 translate-y-full bg-[#020B14] transition-transform duration-500 ease-in-out group-hover:translate-y-0" />
+            <div className="absolute inset-0 translate-y-[101%] bg-typography-dark transition-transform duration-500 ease-in-out group-hover:translate-y-0" />
 
-            <span className="relative z-10 flex size-12 items-center justify-center border border-[#000912] text-[14px] md:text-[16px] font-bold leading-6 text-[#000912] transition-colors duration-300 group-hover:border-white group-hover:text-white">
+            <span className="relative z-10 flex size-12 items-center justify-center border border-typography-dark text-[14px] md:text-base font-bold avenir-700 text-typography-dark transition-colors duration-300 group-hover:border-white group-hover:text-white">
                 {step.number}
             </span>
 
-            <div className="mt-auto pt-10">
-                <h3 className="relative z-10 text-[22px] md:text-[26px] font-semibold leading-tight text-[#000912] transition-colors duration-300 group-hover:text-white">
+            <div className="mt-[158px]">
+                <h3 className="relative z-10 text-[22px] md:text-[26px] leading-tight text-typography-dark transition-colors duration-300 group-hover:text-white avenir-600">
                     {step.title}
                 </h3>
 
-                <p className="relative z-10 mt-3 text-[14px] md:text-[16px] font-medium leading-5 text-[#5E686F] transition-colors duration-300 group-hover:text-[#D1D5DB]">
+                <p className="relative z-10 mt-3 text-sm md:text-base text-typography-light transition-colors duration-300 group-hover:text-white avenir-400">
                     {step.description}
                 </p>
             </div>

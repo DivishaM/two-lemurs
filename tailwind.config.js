@@ -5,20 +5,6 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '1.5rem',
-        lg: '2rem',
-      },
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-      },
-    },
     extend: {
       colors: {
         primary: {
@@ -36,6 +22,18 @@ export default {
         typography: {
           main: '#0F172A',
           muted: '#475569',
+          dark: '#000912',
+          light: '#5E686F',
+          offwhite: '#FAFAFA'
+        },
+      },
+      borderColor: {
+        neutral: '#D9DBDD',
+        dark: '#101E27',
+        neutral: {
+          100: '#D9DBDD',
+          600: '#434E56',
+          800: '#101E27',
         },
       },
     },
@@ -85,4 +83,4 @@ export default {
       });
     },
   ],
-}
+};

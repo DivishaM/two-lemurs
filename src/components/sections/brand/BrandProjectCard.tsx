@@ -15,11 +15,10 @@ export const BrandProjectCard: React.FC<BrandProjectCardProps> = ({
 
   return (
     <div
-      className={`sticky top-24 lg:top-28 border border-white/10 bg-dark-card p-4 sm:p-6 lg:p-8 flex flex-col ${
-        isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-      } items-stretch gap-6 sm:gap-8 shadow-2xl transition-all duration-300`}
+      className={`sticky top-24 lg:top-28 border border-white/10 bg-dark-card p-4 sm:p-6 lg:p-[20px] flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
+        } items-stretch lg:items-center justify-between gap-6 sm:gap-8 lg:gap-[22px] shadow-2xl transition-all duration-300 w-full mx-auto`}
     >
-      <div className="lg:w-[65%] flex items-center justify-center overflow-hidden bg-black/30">
+      <div className="w-full lg:w-[856px] lg:h-[600px] flex items-center justify-center overflow-hidden bg-black/30 flex-shrink-0">
         <img
           src={project.image}
           alt={project.title}
@@ -27,23 +26,23 @@ export const BrandProjectCard: React.FC<BrandProjectCardProps> = ({
         />
       </div>
 
-      <div className="lg:w-[35%] bg-white p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+      <div className="w-full lg:w-[362px] lg:h-[600px] bg-white p-6 sm:p-8 lg:p-10 flex flex-col justify-between flex-shrink-0">
         <div>
-          <h3 className="gothic-800 text-2xl sm:text-3xl text-typography-main flex items-center gap-1.5">
+          <h3 className="avenir-600 text-2xl sm:text-3xl text-typography-main flex items-center gap-1.5">
             {project.title}
             <span className="inline-block h-2 w-2 bg-primary flex-shrink-0" />
           </h3>
-          <p className="avenir-400 text-sm sm:text-base text-slate-600 leading-relaxed mt-4">
+          <p className="avenir-500 text-sm sm:text-base text-slate-600 leading-relaxed mt-4">
             {project.description}
           </p>
         </div>
 
-        <div className="mt-8 pt-4">
+        <div className="avenir-500 mt-8 pt-4">
           <Button
             label="View live project"
             variant="dark"
             icon="arrow-up-right"
-            size="md"
+            size="lg"
             className="w-full justify-center"
           />
         </div>

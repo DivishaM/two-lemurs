@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '../common/Button';
 
@@ -11,30 +11,45 @@ const navLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
-      <div className="container flex items-center justify-between h-16">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 h-24 flex items-center transition-all duration-300 ${isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-surface-border/50'
+          : 'bg-transparent'
+        }`}
+    >
+      <div className="container flex items-center justify-between">
 
         <a href="/" className="flex-shrink-0">
-          <img src="/assets/Logo.svg" alt="Two Lemurs" className="h-5 w-auto" />
+          <img src="/assets/Logo.svg" alt="Two Lemurs" className="w-auto" />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-3.5 lg:gap-6 xl:gap-8 flex-shrink-0">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="group relative py-1 text-sm avenir-500 text-typography-main"
+              className="group relative text-sm lg:text-base xl:text-lg avenir-500 text-typography-main whitespace-nowrap"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-current transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-current transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="avenir-500 hidden md:block flex-shrink-0">
           <Button label="Talk to Sales" variant="primary" icon="arrow-up-right" size="md" />
         </div>
 
@@ -50,7 +65,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden items-center border-t border-surface-border bg-white px-6 py-4 flex flex-col gap-4">
+        <div className="absolute items-center top-full left-0 right-0 md:hidden border-t border-surface-border bg-white px-6 py-5 flex flex-col gap-4 shadow-lg">
           {navLinks.map((link) => (
             <a
               key={link.label}

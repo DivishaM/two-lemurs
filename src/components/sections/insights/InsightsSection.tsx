@@ -1,24 +1,24 @@
-import { ArrowUpRight } from "lucide-react";
+import Button from "../../common/Button";
 import InsightCard from "./InsightCard";
 import { insightsData } from "../../../data/insightsData";
 
 export default function InsightsSection() {
   return (
-    <section className="bg-[#FAFAFA] py-16 md:py-24">
+    <section className="bg-[#FAFAFA] py-16 md:py-[128px]">
       <div className="container">
         {/* Section Heading */}
         <div className="mb-10 flex items-center justify-between gap-4">
-          <h2 className="text-[28px] font-extrabold leading-[36px] text-[#000912] md:text-[48px] md:leading-[58px]">
+          <h2 className="text-[28px] font-extrabold leading-[34px] text-[#000912] md:text-[36px] md:leading-tight lg:text-[48px] gothic-800">
             Explore Our Insights
           </h2>
 
-          <a
+          <Button
+            label="Full Insight"
             href="#"
-            className="inline-flex shrink-0 items-center gap-2 bg-[#000912] px-4 py-3 text-xs text-white transition-colors hover:bg-[#1F6FD0]"
-          >
-            Full Insight
-            <ArrowUpRight size={14} />
-          </a>
+            variant="dark"
+            icon="arrow-up-right"
+            size="lg"
+          />
         </div>
 
         {/* Insight Cards */}

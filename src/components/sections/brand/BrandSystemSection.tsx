@@ -5,14 +5,14 @@ import { Button } from '../../common/Button';
 
 export default function BrandSystemSection() {
   return (
-    <section id="portfolio" className="bg-dark py-16 sm:py-20 lg:py-28 text-white">
+    <section id="portfolio" className="bg-dark py-16 sm:py-20 lg:py-[92px] text-white">
       <div className="container">
-        
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="gothic-800 text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+
+        <div className="text-center w-full max-w-6xl mx-auto">
+          <h2 className="gothic-800 text-3xl sm:text-4xl lg:text-5xl lg:leading-[56px] text-white leading-tight">
             What a complete brand system looks like
           </h2>
-          <p className="avenir-400 text-slate-400 text-sm sm:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+          <p className="avenir-500 text-slate-400 text-base lg:text-[18px] mt-4 leading-7">
             Most businesses only get a logo mark. Select a project below to see how we build scalable visual identities end-to-end.
           </p>
         </div>

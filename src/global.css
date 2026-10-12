@@ -87,3 +87,16 @@
 .animate-marquee {
   animation: marquee 25s linear infinite;
 }
+
+.container {
+  width: 90%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 1500px) {
+  .container {
+    max-width: 1440px;
+  }
+}

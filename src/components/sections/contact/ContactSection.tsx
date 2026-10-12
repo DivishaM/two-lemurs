@@ -3,24 +3,24 @@ import { Phone, Mail } from "lucide-react";
 
 export default function ContactSection() {
   return (
-    <section className="bg-[#000912] py-16 text-white md:py-24">
+    <section className="bg-[#000912] py-16 text-white md:py-[128px]">
       <div className="container grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
 
         {/* Left Content */}
         <div>
-          <h2 className="max-w-md text-[28px] font-extrabold leading-[36px] text-[#FAFAFA] md:text-[48px] md:leading-[56px]">
+          <h2 className="text-[28px] font-extrabold leading-[36px] text-white md:text-[48px] md:leading-[56px] gothic-800">
             Have a good
             <br />
             problem for us?
           </h2>
 
-          <p className="mt-3 max-w-md text-[14px] font-medium leading-[20px] text-[#5E686F] md:text-[18px] md:leading-[28px]">
+          <p className="mt-3 max-w-md text-sm font-medium leading-[20px] text-typography-light md:text-lg md:leading-[28px] avenir-500 max-w-[400px]">
             Tell us where you are, where you want to go,
             and what is standing in the way.
           </p>
 
-          <div className="mt-12">
-            <p className="text-[14px] font-medium leading-[20px] text-white md:text-[18px] md:leading-[28px]">
+          <div className="mt-16">
+            <p className="text-sm font-medium text-white md:text-lg avenir-400">
               Prefer speaking with our team directly?
             </p>
 
@@ -36,7 +36,7 @@ export default function ContactSection() {
                     className="transition-transform duration-300 group-hover:-rotate-[12deg]"
                   />
                 </span>
-                <span className="text-[14px] font-normal leading-5 text-white md:text-[16px] md:leading-6">
+                <span className="text-sm font-medium text-white md:text-base avenir-400">
                   +61 255 503 559
                 </span>
               </a>
@@ -52,7 +52,7 @@ export default function ContactSection() {
                     className="transition-transform duration-300 group-hover:-rotate-[12deg]"
                   />
                 </span>
-                <span className="text-[14px] font-normal leading-5 text-white md:text-[16px] md:leading-6">
+                <span className="text-sm font-medium text-white md:text-base avenir-400">
                   info@twolemurs.com
                 </span>
               </a>
