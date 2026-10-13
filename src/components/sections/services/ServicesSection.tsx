@@ -7,7 +7,7 @@ export default function ServicesSection() {
     <section id="services" className="bg-white py-16 sm:py-20 lg:py-[136px]">
       <div className="container grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
-        <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left lg:sticky lg:top-28">
+        <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left lg:sticky lg:top-48">
           <h2 className="gothic-800 text-3xl sm:text-4xl lg:text-5xl text-typography-main leading-tight">
             Services That Make an Impact
           </h2>
