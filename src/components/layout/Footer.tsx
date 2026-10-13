@@ -1,10 +1,10 @@
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
 
 const socialLinks = [
-  { name: 'Instagram', icon: '/assets/instagram.svg', href: '#' },
-  { name: 'Facebook', icon: '/assets/facebook.svg', href: '#' },
-  { name: 'LinkedIn', icon: '/assets/linkedin.svg', href: '#' },
-  { name: 'Twitter', icon: '/assets/Twitter.svg', href: '#' },
+  { name: 'Instagram', icon: './assets/instagram.svg', href: '#' },
+  { name: 'Facebook', icon: './assets/facebook.svg', href: '#' },
+  { name: 'LinkedIn', icon: './assets/linkedin.svg', href: '#' },
+  { name: 'Twitter', icon: './assets/Twitter.svg', href: '#' },
 ];
 
 const quickLinks = [
@@ -27,9 +27,9 @@ export default function Footer() {
         {/* Top Header Row: Logo & Socials */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-3">
-            <a href="/" className="inline-block">
+            <a href="/" title='logo' className="inline-block">
               <img
-                src="/assets/Logo.svg"
+                src="./assets/Logo.svg"
                 alt="Two Lemurs"
                 className="h-8 w-auto brightness-0 invert"
               />
@@ -47,6 +47,7 @@ export default function Footer() {
                 key={social.name}
                 href={social.href}
                 aria-label={social.name}
+                title={social.name}
                 className="group flex size-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-white/30 hover:bg-white/10"
               >
                 <img
@@ -82,6 +83,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    title={link.label}
                     className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                   >
                     <span>{link.label}</span>
@@ -104,6 +106,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    title={link.label}
                     className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                   >
                     <span>{link.label}</span>
@@ -125,6 +128,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+61255503559"
+                  title="+61 255 503 559"
                   className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
                   <div className="flex items-center gap-2.5">
@@ -139,6 +143,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:info@twolemurs.com"
+                  title='info@twolemurs.com'
                   className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
                   <div className="flex items-center gap-2.5">
@@ -155,6 +160,7 @@ export default function Footer() {
                   href="https://maps.google.com/?q=123+Demo+Street,+Richmond+VIC+3121,+Australia"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title='123 Demo Street, Richmond VIC 3121, Australia'
                   className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
                   <div className="flex items-start gap-2.5">
@@ -176,10 +182,11 @@ export default function Footer() {
 
         {/* Copyright & Legal Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 avenir-500">
-          <p>© 2026 Two Lemurs. All rights reserved.</p>
+          <p>&copy; 2026 Two Lemurs. All rights reserved.</p>
           <div className="avenir-500 flex items-center gap-6 text-sm">
             <a
               href="#privacy"
+              title='Privacy Policy'
               className="group inline-flex items-center gap-1 border-b border-transparent pb-0.5 transition-all duration-200 hover:border-white/20 hover:text-white"
             >
               <span>Privacy Policy</span>
@@ -190,6 +197,7 @@ export default function Footer() {
             </a>
             <a
               href="#terms"
+              title='Terms of Service'
               className="group inline-flex items-center gap-1 border-b border-transparent pb-0.5 transition-all duration-200 hover:border-white/20 hover:text-white"
             >
               <span>Terms of Service</span>

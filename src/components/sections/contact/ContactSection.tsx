@@ -27,6 +27,7 @@ export default function ContactSection() {
             <div className="mt-5 flex flex-wrap gap-6">
               <a
                 href="tel:+61255503559"
+                title="+61 255 503 559"
                 className="group flex items-center gap-2"
               >
                 <span className="flex size-9 items-center justify-center border border-[#29353E] transition-colors duration-300 group-hover:bg-[#35434D]">
@@ -43,6 +44,7 @@ export default function ContactSection() {
 
               <a
                 href="mailto:info@twolemurs.com"
+                title="info@twolemurs.com"
                 className="group flex items-center gap-2"
               >
                 <span className="flex size-9 items-center justify-center border border-[#29353E] transition-colors duration-300 group-hover:bg-[#35434D]">

@@ -31,8 +31,8 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between">
 
-        <a href="/" className="flex-shrink-0">
-          <img src="/assets/Logo.svg" alt="Two Lemurs" className="w-auto" />
+        <a href="/" title='logo' className="flex-shrink-0">
+          <img src="./assets/Logo.svg" alt="Two Lemurs" className="w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-3.5 lg:gap-6 xl:gap-8 flex-shrink-0">
@@ -40,6 +40,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
+              title={link.label}
               className="group relative text-sm lg:text-base xl:text-lg avenir-500 text-typography-main whitespace-nowrap"
             >
               {link.label}
