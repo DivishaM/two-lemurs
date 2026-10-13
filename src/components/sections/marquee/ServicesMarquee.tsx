@@ -3,7 +3,7 @@ import { servicesData } from "../../../data/servicesData";
 
 export default function ServicesMarquee() {
   return (
-    <section className="overflow-hidden bg-typography-dark py-7">
+    <section className="overflow-hidden bg-typography-dark lg:py-7 py-6">
       <div className="flex w-max animate-marquee items-center gap-9 px-20">
         {[...servicesData, ...servicesData].map((service, index) => (
           <MarqueeItem

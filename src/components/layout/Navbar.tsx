@@ -24,15 +24,15 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-24 flex items-center transition-all duration-300 ${isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-surface-border/50'
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 h-[68px] md:h-24 flex items-center transition-all duration-300 ${isScrolled
+        ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-surface-border/50'
+        : 'bg-transparent'
         }`}
     >
       <div className="container flex items-center justify-between">
 
         <a href="/" title='logo' className="flex-shrink-0">
-          <img src="./assets/Logo.svg" alt="Two Lemurs" className="w-auto" />
+          <img src="./assets/Logo.svg" alt="Two Lemurs" className="h-[22px] w-auto md:h-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-3.5 lg:gap-6 xl:gap-8 flex-shrink-0">
@@ -56,11 +56,11 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden text-typography-main p-1"
+          className="md:hidden text-typography-main size-10 flex items-center justify-center border border-slate-200 transition-colors hover:bg-slate-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 

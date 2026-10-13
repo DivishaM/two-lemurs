@@ -17,7 +17,7 @@ export default function InsightCard({ insight }: InsightCardProps) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col md:p-6 p-4">
         <h3 className="text-base font-medium leading-6 text-typography-dark md:text-xl md:leading-7 avenir-500">
           {insight.title}
         </h3>

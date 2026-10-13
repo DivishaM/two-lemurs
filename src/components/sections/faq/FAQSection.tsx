@@ -6,18 +6,18 @@ export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section id="faq" className="bg-[#FAFAFA] py-16 md:py-[128px]">
+        <section id="faq" className="bg-typography-offwhite py-12 md:py-20 xl:py-32">
             <div className="container">
-                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
+                <div className="grid grid-cols-1 2xl:gap-10 gap-3 lg:grid-cols-2">
                     {/* Left Content */}
                     <div>
-                        <h2 className="text-[28px] font-extrabold leading-[34px] text-[#000912] md:text-[36px] md:leading-tight lg:text-[48px] gothic-800">
+                        <h2 className="font-extrabold text-typography-dark lg:text-5xl lg:leading-[56px] md:text-4xl md:leading-[44px] text-[28px] leading-9 gothic-800">
                             Frequently Asked
-                            <br className="hidden md:block" />
+                            <br />
                             Questions
                         </h2>
 
-                        <p className="mt-3 text-lg font-medium text-typography-light md:text-[16px] lg:text-[18px] avenir-500 max-w-[450px]">
+                        <p className="mt-3 text-sm font-medium text-typography-light md:text-base lg:text-lg avenir-500 max-w-[450px] w-[90%]">
                             Lorem ipsum dolor sit amet consectetur. Quisque
                             pulvinar quam metus lacus. Cursus pharetra
                         </p>

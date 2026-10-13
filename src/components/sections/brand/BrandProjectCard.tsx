@@ -26,7 +26,7 @@ export const BrandProjectCard: React.FC<BrandProjectCardProps> = ({
         />
       </div>
 
-      <div className="w-full lg:flex-1 bg-white p-6 flex flex-col justify-between min-w-0">
+      <div className="w-full lg:flex-1 bg-white lg:p-6 p-4 flex flex-col justify-between min-w-0">
         <div>
           <h3 className="avenir-600 text-xl sm:text-2xl text-typography-main">
             {project.title}
@@ -42,7 +42,7 @@ export const BrandProjectCard: React.FC<BrandProjectCardProps> = ({
             label="View live project"
             variant="dark"
             icon="arrow-up-right"
-            size="lg"
+            size="md"
             className="w-full justify-center"
           />
         </div>

@@ -7,7 +7,7 @@ interface ServiceCardProps {
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   return (
-    <div className="border border-surface-border bg-white p-6 sm:p-8 lg:p-10 min-h-[250px] lg:h-[278px] flex flex-col justify-between">
+    <div className="border border-surface-border bg-white p-6 sm:p-8 lg:p-10 min-h-[264px] lg:h-[278px] flex flex-col justify-between">
       <div>
         <h3 className="avenir-600 text-xl sm:text-[26px] text-typography-main">
           {service.title}
@@ -20,7 +20,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         {service.tags.map((tag) => (
           <span
             key={tag}
-            className="h-9 inline-flex items-center bg-slate-100 text-slate-700 text-sm avenir-500 px-4"
+            className="h-8 sm:h-9 inline-flex items-center bg-slate-100 text-slate-700 text-xs sm:text-sm avenir-500 px-3 sm:px-4"
           >
             {tag}
           </span>

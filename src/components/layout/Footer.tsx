@@ -21,7 +21,7 @@ const serviceLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 sm:pb-[240px] overflow-hidden relative">
+    <footer className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden relative">
       <div className="container">
 
         {/* Top Header Row: Logo & Socials */}
@@ -31,7 +31,7 @@ export default function Footer() {
               <img
                 src="./assets/Logo.svg"
                 alt="Two Lemurs"
-                className="h-8 w-auto brightness-0 invert"
+                className="h-8 w-auto brightness-0 invert md:w-auto w-[150px]"
               />
             </a>
             {/* Mobile Tagline (shows directly below logo on mobile) */}
@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="my-10 sm:my-12 border-t border-white/10" />
+        <div className="my-6 sm:my-12 border-t border-white/10" />
 
         {/* Navigation & Contact Links */}
         <div className="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
@@ -178,7 +178,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="my-10 sm:my-12 border-t border-white/10" />
+        <div className="my-6 sm:my-12 border-t border-white/10" />
 
         {/* Copyright & Legal Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 avenir-500">
@@ -210,8 +210,8 @@ export default function Footer() {
         </div>
 
         {/* Giant Bottom Brand Logo */}
-        <div className="flex justify-center overflow-hidden pointer-events-none select-none">
-          <div className="gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-[0.88] text-white absolute bottom-[-4px] sm:bottom-[-16px] whitespace-nowrap text-center">
+        <div className="mt-8 sm:mt-12 flex justify-center overflow-hidden pointer-events-none select-none -mb-1 sm:-mb-4">
+          <div className="gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-none sm:leading-[0.88] text-white whitespace-nowrap text-center">
             Two Lemurs
           </div>
         </div>

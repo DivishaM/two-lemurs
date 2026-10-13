@@ -10,11 +10,11 @@ export default function ProcessStep({ step }: ProcessStepProps) {
             {/* Animated background */}
             <div className="absolute inset-0 translate-y-[101%] bg-typography-dark transition-transform duration-500 ease-in-out group-hover:translate-y-0" />
 
-            <span className="relative z-10 flex size-12 items-center justify-center border border-typography-dark text-[14px] md:text-base font-bold avenir-700 text-typography-dark transition-colors duration-400 group-hover:border-white group-hover:text-white group-hover:-rotate-6">
+            <span className="relative z-10 flex size-12 items-center justify-center border border-typography-dark text-sm md:text-base font-bold avenir-700 text-typography-dark transition-colors duration-400 group-hover:border-white group-hover:text-white group-hover:-rotate-6">
                 {step.number}
             </span>
 
-            <div className="mt-[158px]">
+            <div className="lg:mt-[158px] mt-[100px]">
                 <h3 className="relative z-10 text-[22px] md:text-[26px] leading-tight text-typography-dark transition-colors duration-300 group-hover:text-white avenir-600">
                     {step.title}
                 </h3>

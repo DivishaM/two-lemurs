@@ -24,7 +24,7 @@ export default function FAQItem({
                     {item.id}
                 </span>
 
-                <span className="flex flex-1 items-center font-semibold text-[#000912] md:text-base lg:text-xl text-sm avenir-600">
+                <span className="flex flex-1 items-center text-sm font-semibold text-typography-dark md:text-base lg:text-lg xl:text-xl avenir-600">
                     {item.question}
                 </span>
 

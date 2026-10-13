@@ -9,10 +9,10 @@ export default function BrandSystemSection() {
       <div className="container">
 
         <div className="text-center w-full max-w-6xl mx-auto">
-          <h2 className="gothic-800 text-3xl sm:text-4xl lg:text-5xl lg:leading-[56px] text-white leading-tight">
+          <h2 className="gothic-800 text-[28px] sm:text-4xl lg:text-5xl lg:leading-[56px] text-white leading-tight">
             What a complete brand system looks like
           </h2>
-          <p className="avenir-500 text-slate-400 text-base lg:text-[18px] mt-4 leading-7">
+          <p className="avenir-500 text-slate-400 text-sm sm:text-base lg:text-[18px] mt-4 leading-7">
             Most businesses only get a logo mark. Select a project below to see how we build scalable visual identities end-to-end.
           </p>
         </div>
@@ -33,7 +33,7 @@ export default function BrandSystemSection() {
             variant="dark"
             icon={<Download size={16} />}
             className="border-white/20 hover:border-white/40 hover:bg-white/5"
-            size="md"
+            size="lg"
           />
         </div>
 

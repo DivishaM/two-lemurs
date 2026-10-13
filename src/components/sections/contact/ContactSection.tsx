@@ -3,28 +3,28 @@ import { Phone, Mail } from "lucide-react";
 
 export default function ContactSection() {
   return (
-    <section className="bg-[#000912] py-16 text-white md:py-[128px]">
-      <div className="container grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+    <section className="bg-typography-dark py-12 md:py-20 xl:py-32 text-white">
+      <div className="container grid grid-cols-1 md:grid-cols-2 2xl:gap-16 gap-8">
 
         {/* Left Content */}
         <div>
-          <h2 className="text-[28px] font-extrabold leading-[36px] text-white md:text-[48px] md:leading-[56px] gothic-800">
+          <h2 className="font-extrabold text-white lg:text-5xl lg:leading-[56px] md:text-4xl md:leading-[44px] text-[28px] leading-9 gothic-800">
             Have a good
             <br />
             problem for us?
           </h2>
 
-          <p className="mt-3 max-w-md text-sm font-medium leading-[20px] text-typography-light md:text-lg md:leading-[28px] avenir-500 max-w-[400px]">
+          <p className="mt-3 text-sm font-medium leading-5 text-typography-light md:text-lg md:leading-7 avenir-500 max-w-[400px]">
             Tell us where you are, where you want to go,
             and what is standing in the way.
           </p>
 
-          <div className="mt-16">
+          <div className="lg:mt-16 mt-8">
             <p className="text-sm font-medium text-white md:text-lg avenir-400">
               Prefer speaking with our team directly?
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-6">
+            <div className="mt-5 flex flex-wrap lg:gap-6 gap-3">
               <a
                 href="tel:+61255503559"
                 title="+61 255 503 559"
@@ -34,7 +34,7 @@ export default function ContactSection() {
                   <Phone
                     size={16}
                     strokeWidth={1.5}
-                    className="transition-transform duration-300 group-hover:-rotate-[12deg]"
+                    className="transition-transform duration-300 group-hover:-rotate-12"
                   />
                 </span>
                 <span className="text-sm font-medium text-white md:text-base avenir-400">
@@ -51,7 +51,7 @@ export default function ContactSection() {
                   <Mail
                     size={16}
                     strokeWidth={1.5}
-                    className="transition-transform duration-300 group-hover:-rotate-[12deg]"
+                    className="transition-transform duration-300 group-hover:-rotate-12"
                   />
                 </span>
                 <span className="text-sm font-medium text-white md:text-base avenir-400">
