@@ -5,7 +5,7 @@ export default function HeroSection() {
     <section className="relative flex flex-col overflow-hidden bg-gray-50 min-h-screen">
 
       {/* Desktop Hero Image */}
-      <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
+      <div className="pointer-events-none absolute inset-0 z-0 hidden xl:block">
         <img
           src="./images/hero-image.png"
           alt="Two Lemurs Hero Graphic"
@@ -13,16 +13,16 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Mobile Hero Image */}
-      <div className="relative flex h-[300px] items-center justify-center overflow-hidden sm:h-[360px] lg:hidden">
+      {/* Mobile & Tablet Hero Image */}
+      <div className="relative flex h-[48vh] sm:h-[70vh] w-full items-center justify-center overflow-hidden xl:hidden pt-4 sm:pt-6">
         <img
           src="./images/hero-image.png"
           alt="Two Lemurs Hero Graphic"
-          className="pointer-events-none h-auto w-[520px] max-w-none -translate-x-[12%] sm:w-[620px]"
+          className="pointer-events-none h-full w-auto max-w-none object-contain -translate-x-[12%] sm:-translate-x-[10%]"
         />
       </div>
 
-      <div className="container relative z-10 mt-auto pb-10 pt-24 sm:pb-12 sm:pt-28 lg:pb-16 lg:pt-36 xl:pb-20">
+      <div className="container relative z-10 mt-auto pb-8 sm:pb-12 xl:pb-20 pt-4 sm:pt-8 xl:pt-36">
         <div className="flex w-full max-w-[640px] flex-col gap-6 lg:gap-8">
 
           <h1 className="gothic-800 text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-tight lg:leading-[64px] tracking-tight text-typography-main">

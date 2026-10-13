@@ -10,7 +10,7 @@ export default function ProcessStep({ step }: ProcessStepProps) {
             {/* Animated background */}
             <div className="absolute inset-0 translate-y-[101%] bg-typography-dark transition-transform duration-500 ease-in-out group-hover:translate-y-0" />
 
-            <span className="relative z-10 flex size-12 items-center justify-center border border-typography-dark text-[14px] md:text-base font-bold avenir-700 text-typography-dark transition-colors duration-300 group-hover:border-white group-hover:text-white">
+            <span className="relative z-10 flex size-12 items-center justify-center border border-typography-dark text-[14px] md:text-base font-bold avenir-700 text-typography-dark transition-colors duration-400 group-hover:border-white group-hover:text-white group-hover:-rotate-6">
                 {step.number}
             </span>
 
