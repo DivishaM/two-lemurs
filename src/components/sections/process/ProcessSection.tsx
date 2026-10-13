@@ -23,14 +23,14 @@ export default function ProcessSection() {
                 </div>
 
                 {/* Process Cards */}
-                <div className="grid grid-cols-1 border border-[#D9DBDD] sm:grid-cols-2 xl:grid-cols-4">
+                <div className="grid grid-cols-1 border-r border-[#D9DBDD] sm:grid-cols-2 xl:grid-cols-4">
                     {processData.map((step) => (
                         <ProcessStep key={step.number} step={step} />
                     ))}
                 </div>
 
                 {/* CTA Banner */}
-                <div className="mt-3 flex flex-col gap-5 border border-[#D9DBDD] bg-white p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-4">
+                <div className="mt-5 flex flex-col gap-5 border border-[#D9DBDD] bg-white p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-4">
                     <div>
                         <p className="text-[14px] md:text-[16px] font-normal leading-5 text-[#68727D]">
                             Have a project in mind?
