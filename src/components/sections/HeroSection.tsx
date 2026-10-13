@@ -7,7 +7,7 @@ export default function HeroSection() {
       {/* Desktop Hero Image */}
       <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
         <img
-          src="/images/hero-image.png"
+          src="./images/hero-image.png"
           alt="Two Lemurs Hero Graphic"
           className="h-full w-full object-cover object-right"
         />
@@ -16,7 +16,7 @@ export default function HeroSection() {
       {/* Mobile Hero Image */}
       <div className="relative flex h-[300px] items-center justify-center overflow-hidden sm:h-[360px] lg:hidden">
         <img
-          src="/images/hero-image.png"
+          src="./images/hero-image.png"
           alt="Two Lemurs Hero Graphic"
           className="pointer-events-none h-auto w-[520px] max-w-none -translate-x-[12%] sm:w-[620px]"
         />
