@@ -132,19 +132,10 @@ export default function Navbar() {
       ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 flex items-center transition-all duration-400 ease-[cubic-bezier(0.2,0.7,0.2,1)] will-change-transform ${
         isScrolled
-          ? 'h-[58px] md:h-[72px] bg-white/90 backdrop-blur-xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.07),0_1px_3px_rgba(0,0,0,0.04)] border-b border-surface-border/70'
-          : 'h-[68px] md:h-24 bg-transparent border-b border-transparent shadow-none'
+          ? 'h-[58px] md:h-[72px] bg-white/95 backdrop-blur-xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)]'
+          : 'h-[68px] md:h-24 bg-transparent shadow-none'
       }`}
     >
-      {/* Subtle bottom edge metallic light reflection when docked sticky */}
-      <div
-        className={`pointer-events-none absolute bottom-0 left-0 right-0 h-[1.5px] transition-opacity duration-500 ${
-          isScrolled
-            ? 'opacity-100 bg-gradient-to-r from-transparent via-primary/35 to-transparent'
-            : 'opacity-0'
-        }`}
-      />
-
       <div className="container flex items-center justify-between">
         {/* Brand Logo with smooth scale and positioning */}
         <a ref={logoRef} href="/" title="logo" className="flex-shrink-0 group">
