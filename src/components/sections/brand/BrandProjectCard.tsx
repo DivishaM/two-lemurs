@@ -176,14 +176,14 @@ export default function BrandProjectCard({
   return (
     <div
       ref={cardRef}
-      className={`group sticky top-24 lg:top-28 border border-white/10 bg-dark-card p-4 sm:p-6 lg:p-[20px] flex flex-col ${
+      className={`group sticky top-20 lg:top-[76px] xl:top-28 border border-white/10 bg-dark-card p-3 sm:p-5 lg:p-[18px] xl:p-[20px] flex flex-col ${
         isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-      } items-stretch gap-6 sm:gap-8 lg:gap-5 shadow-2xl transition-all duration-400 w-full mx-auto hover:border-white/20`}
+      } items-stretch gap-4 sm:gap-6 lg:gap-4 xl:gap-5 shadow-2xl transition-all duration-400 w-full mx-auto hover:border-white/20 brand-project-sticky-card min-h-0`}
     >
       {/* Project Showcase Image with Ken Burns entrance, hover zoom, and mouse parallax */}
       <div
         ref={imgWrapperRef}
-        className="w-full lg:w-[68%] xl:w-[70%] aspect-[856/600] flex items-center justify-center overflow-hidden bg-black/30 flex-shrink-0 relative select-none cursor-pointer"
+        className="brand-card-img-wrapper w-full lg:w-[68%] xl:w-[70%] aspect-[856/600] max-h-[42vh] lg:max-h-[calc(100vh-8.5rem)] lg:max-h-[calc(100dvh-8.5rem)] flex items-center justify-center overflow-hidden bg-black/30 flex-shrink-0 relative select-none cursor-pointer min-h-0"
       >
         <img
           ref={imgRef}
@@ -200,13 +200,13 @@ export default function BrandProjectCard({
       {/* Content Side with animated title, dot, and description */}
       <div
         ref={contentColRef}
-        className="w-full lg:flex-1 bg-white lg:p-6 p-4 flex flex-col justify-between min-w-0 transition-colors duration-300 will-change-transform"
+        className="brand-card-content w-full lg:flex-1 bg-white p-4 sm:p-5 lg:p-5 xl:p-6 flex flex-col justify-between min-w-0 min-h-0 transition-colors duration-300 will-change-transform overflow-hidden"
       >
         <div>
           {/* Headline with kinetic rolling text on hover (Heading remains dark, never turns blue) */}
           <h3
             ref={titleRef}
-            className="avenir-600 text-xl sm:text-2xl text-typography-main tracking-tight cursor-default"
+            className="avenir-600 text-lg sm:text-xl xl:text-2xl text-typography-main tracking-tight cursor-default"
           >
             {titleWords.map((word, i) => (
               <span
@@ -244,7 +244,7 @@ export default function BrandProjectCard({
           {/* Preserved Original Continuous Paragraph Structure */}
           <p
             ref={descRef}
-            className="avenir-500 text-sm sm:text-base text-slate-600 leading-relaxed mt-4 will-change-transform"
+            className="brand-card-desc avenir-500 text-xs sm:text-sm lg:text-[15px] xl:text-base text-slate-600 leading-relaxed mt-2.5 sm:mt-3.5 xl:mt-4 will-change-transform"
           >
             {project.description}
           </p>
@@ -253,7 +253,7 @@ export default function BrandProjectCard({
         {/* Animated Action Button with kinetic micro-hover */}
         <div
           ref={btnRef}
-          className="avenir-500 mt-8 pt-4 will-change-transform transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:-translate-y-1"
+          className="brand-card-btn avenir-500 mt-4 sm:mt-6 xl:mt-8 pt-2 sm:pt-3 xl:pt-4 will-change-transform transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:-translate-y-1 flex-shrink-0"
         >
           <Button
             href="#contact"
