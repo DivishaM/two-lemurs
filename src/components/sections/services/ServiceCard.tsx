@@ -48,10 +48,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       className="service-card border border-surface-border bg-white p-6 sm:p-8 lg:p-10 min-h-[264px] lg:h-[278px] flex flex-col justify-between transition-colors duration-300 hover:border-typography-dark"
     >
       <div>
-        <h3 className="avenir-600 text-xl sm:text-[26px] text-typography-main">
+        <h3 className="avenir-600 text-[22px] sm:text-[26px] leading-[32px] sm:leading-[36px] text-typography-main">
           {service.title}
         </h3>
-        <p className="avenir-500 text-base sm:text-lg text-slate-600 mt-3 leading-relaxed max-w-[500px]">
+        <p className="avenir-500 text-base sm:text-lg text-slate-600 mt-3 leading-[24px] sm:leading-[28px] max-w-[500px]">
           {service.description}
         </p>
       </div>
@@ -60,7 +60,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         {service.tags.map((tag) => (
           <span
             key={tag}
-            className="h-8 sm:h-9 inline-flex items-center bg-slate-100 text-slate-700 text-xs sm:text-sm avenir-500 px-3 sm:px-4 transition-colors duration-200 hover:bg-slate-200"
+            className="h-8 sm:h-9 inline-flex items-center bg-slate-100 text-slate-700 text-xs sm:text-smleading-[18px] sm:leading-[20px] avenir-500 px-3 sm:px-4 transition-colors duration-200 hover:bg-slate-200"
           >
             {tag}
           </span>

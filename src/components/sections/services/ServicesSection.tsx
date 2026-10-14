@@ -88,7 +88,7 @@ export default function ServicesSection() {
         <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left lg:sticky lg:top-48">
           <h2
             ref={titleRef}
-            className="gothic-800 text-[28px] sm:text-4xl lg:text-5xl text-typography-main leading-tight"
+            className="gothic-800 text-[28px] sm:text-4xl lg:text-5xl leading-[36px] lg:leading-[56px] text-typography-main"
           >
             {headingWords.map((word, i) => (
               <span key={i} className="word-mask mr-[0.24em] last:mr-0 inline-block overflow-hidden">
@@ -99,7 +99,7 @@ export default function ServicesSection() {
 
           <p
             ref={descRef}
-            className="avenir-500 text-slate-600 text-sm sm:text-lg mt-4 max-w-md"
+            className="avenir-500 text-slate-600 text-sm sm:text-lg leading-[20px] sm:leading-[28px] mt-4 max-w-md"
           >
             From brand identity to websites, we help growing businesses build a clear, consistent presence.
           </p>

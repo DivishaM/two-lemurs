@@ -198,7 +198,7 @@ export default function Navbar() {
             label="Talk to Sales"
             variant="primary"
             icon="arrow-up-right"
-            size="md"
+            size="sm"
           />
         </div>
 

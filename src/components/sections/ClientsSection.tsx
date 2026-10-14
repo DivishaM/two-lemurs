@@ -68,7 +68,7 @@ export default function ClientsSection() {
       ref={sectionRef}
       className="bg-dark py-8 sm:py-0 sm:h-[240px] flex flex-col justify-center overflow-hidden"
     >
-      <h2 className="gothic-700 mb-8 sm:mb-7 text-center text-[28px] text-white">
+      <h2 className="gothic-700 mb-8 sm:mb-7 text-center text-[28px] leading-[36px] text-white">
         {words.map((word, i) => (
           <span key={i} className="word-mask mr-[0.22em] last:mr-0 inline-block overflow-hidden">
             <span

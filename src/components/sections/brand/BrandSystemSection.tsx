@@ -83,7 +83,7 @@ export default function BrandSystemSection() {
 
           <p
             ref={descRef}
-            className="avenir-500 text-slate-400 text-sm sm:text-base lg:text-[18px] mt-4 leading-7"
+            className="avenir-500 text-slate-400 text-sm sm:text-base lg:text-[18px] sm:leading-[28px] mt-4 leading-7"
           >
             Most businesses only get a logo mark. Select a project below to see how we build scalable visual identities end-to-end.
           </p>
