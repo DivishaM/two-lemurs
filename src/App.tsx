@@ -20,7 +20,7 @@ function App() {
     <ToastProvider>
       <SmoothScrollProvider>
         <ScrollProgressBar />
-        <CustomCursor />
+        <CustomCursor key="clean-cursor" />
         <Navbar />
         <main>
           <HeroSection />

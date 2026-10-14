@@ -84,8 +84,7 @@ export default function ClientsSection() {
       </h2>
 
       <div
-        className="relative w-full flex items-center overflow-hidden sm:h-[120px] draggable-area cursor-grab active:cursor-grabbing select-none"
-        data-draggable="true"
+        className="relative w-full flex items-center overflow-hidden sm:h-[120px] select-none"
       >
         {/* Left & Right Smooth Edge Fade */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-28 bg-gradient-to-r from-dark to-transparent" />

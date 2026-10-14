@@ -15,6 +15,10 @@ export const CustomCursor: React.FC = () => {
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
+    // Ensure ring is strictly empty
+    ring.textContent = '';
+    ring.innerHTML = '';
+
     // quickTo for high performance 60/120fps tracking
     const dotX = gsap.quickTo(dot, 'x', { duration: 0.1 });
     const dotY = gsap.quickTo(dot, 'y', { duration: 0.1 });
@@ -41,30 +45,21 @@ export const CustomCursor: React.FC = () => {
     };
 
     const handleMouseOver = (e: MouseEvent) => {
+      // Guarantee no text ever exists inside cursor
+      if (ring.textContent) {
+        ring.textContent = '';
+      }
+
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
       const isInteractive = target.closest(
         'a, button, [role="button"], input, textarea, select, .interactive-card, [data-interactive]'
       );
-      const isDraggable = target.closest(
-        '.draggable-area, .animate-marquee, [data-draggable]'
-      );
 
-      if (isDraggable) {
-        ring.textContent = 'Drag';
+      if (isInteractive) {
         gsap.to(ring, {
-          scale: 2.2,
-          backgroundColor: 'rgba(30, 96, 242, 0.12)',
-          borderColor: 'rgba(30, 96, 242, 0.7)',
-          duration: 0.3,
-          ease: 'power2.out',
-        });
-        gsap.to(dot, { opacity: 0, duration: 0.2 });
-      } else if (isInteractive) {
-        ring.textContent = '';
-        gsap.to(ring, {
-          scale: 1.7,
+          scale: 1.6,
           backgroundColor: 'rgba(30, 96, 242, 0.08)',
           borderColor: 'rgba(30, 96, 242, 0.8)',
           duration: 0.3,
@@ -72,7 +67,6 @@ export const CustomCursor: React.FC = () => {
         });
         gsap.to(dot, { opacity: 0.4, scale: 0.6, duration: 0.2 });
       } else {
-        ring.textContent = '';
         gsap.to(ring, {
           scale: 1,
           backgroundColor: 'transparent',
@@ -103,10 +97,12 @@ export const CustomCursor: React.FC = () => {
       />
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 -ml-[19px] -mt-[19px] w-[38px] h-[38px] rounded-full border-[1.5px] border-primary/50 pointer-events-none z-[9997] opacity-0 will-change-transform hidden [@media(hover:hover)_and_(pointer:fine)]:grid place-items-center text-[8px] font-bold tracking-wider text-primary select-none uppercase font-sans"
+        key="cursor-ring-clean"
+        className="fixed top-0 left-0 -ml-[19px] -mt-[19px] w-[38px] h-[38px] rounded-full border-[1.5px] border-primary/50 pointer-events-none z-[9997] opacity-0 will-change-transform hidden [@media(hover:hover)_and_(pointer:fine)]:block"
       />
     </>
   );
 };
 
 export default CustomCursor;
+

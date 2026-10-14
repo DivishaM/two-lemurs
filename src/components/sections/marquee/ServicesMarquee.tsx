@@ -33,8 +33,7 @@ export default function ServicesMarquee() {
 
   return (
     <section
-      className="overflow-hidden bg-typography-dark lg:py-7 py-6 draggable-area cursor-grab active:cursor-grabbing select-none"
-      data-draggable="true"
+      className="overflow-hidden bg-typography-dark lg:py-7 py-6 select-none"
     >
       <div
         ref={trackRef}
