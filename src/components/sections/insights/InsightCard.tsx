@@ -1,13 +1,27 @@
 import { ArrowUpRight } from "lucide-react";
 import type { Insight } from "../../../data/insightsData";
+import { useStaggeredReveal } from "../../../hooks";
 
 interface InsightCardProps {
   insight: Insight;
+  index?: number;
 }
 
-export default function InsightCard({ insight }: InsightCardProps) {
+export default function InsightCard({ insight, index = 0 }: InsightCardProps) {
+  const { ref: cardRef, isVisible, delayMs } = useStaggeredReveal<HTMLElement>(index, {
+    threshold: 0.1,
+    delayStep: 120,
+    itemsPerRow: 3,
+  });
+
   return (
-    <article className="flex h-full flex-col border border-neutral-100 bg-white">
+    <article
+      ref={cardRef}
+      style={{ transitionDelay: `${delayMs}ms` }}
+      className={`flex h-full flex-col border border-neutral-100 bg-white transition-all duration-700 ease-out will-change-transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
       <div className="overflow-hidden">
         <img
           src={insight.image}

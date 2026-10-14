@@ -1,4 +1,6 @@
-import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Phone, Mail, MapPin, ArrowUpRight, ArrowUp } from 'lucide-react';
+import { useScrollReveal } from '../../hooks';
 
 const socialLinks = [
   { name: 'Instagram', icon: './assets/instagram.svg', href: '#' },
@@ -20,18 +22,53 @@ const serviceLinks = [
 ];
 
 export default function Footer() {
+  const [showTopBtn, setShowTopBtn] = useState(false);
+  const { ref: footerRef, isVisible } = useScrollReveal<HTMLElement>({ threshold: 0.1 });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopBtn(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden relative">
-      <div className="container">
+    <>
+      {/* Floating Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+        className={`fixed bottom-6 right-6 z-40 size-11 md:size-12 rounded-full bg-primary text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-primary-hover active:scale-95 cursor-pointer ${
+          showTopBtn
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 translate-y-6 pointer-events-none'
+        }`}
+      >
+        <ArrowUp size={20} />
+      </button>
+
+      <footer ref={footerRef} className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden relative">
+        {/* Subtle ambient glow */}
+        <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-primary/5 blur-3xl rounded-full" />
+
+        <div className="container relative z-10">
 
         {/* Top Header Row: Logo & Socials */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className={`flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between transition-all duration-700 ease-out will-change-transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+        }`}>
           <div className="flex flex-col gap-3">
             <a href="/" title='logo' className="inline-block">
               <img
                 src="./assets/Logo.svg"
                 alt="Two Lemurs"
-                className="h-8 w-auto brightness-0 invert md:w-auto w-[150px]"
+                className="h-8 w-auto brightness-0 invert md:w-auto"
               />
             </a>
             {/* Mobile Tagline (shows directly below logo on mobile) */}
@@ -48,7 +85,7 @@ export default function Footer() {
                 href={social.href}
                 aria-label={social.name}
                 title={social.name}
-                className="group flex size-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-white/30 hover:bg-white/10"
+                className="group flex size-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-primary/40 hover:bg-white/10 hover:scale-105"
               >
                 <img
                   src={social.icon}
@@ -67,14 +104,18 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
 
           {/* Column 1: Desktop Tagline */}
-          <div className="hidden lg:block">
+          <div className={`hidden lg:block transition-all duration-700 delay-100 ease-out will-change-transform ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <p className="text-base avenir-500 text-slate-400 leading-relaxed max-w-xs">
               Helping growing businesses solve the problems growth creates.
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <div className={`transition-all duration-700 delay-200 ease-out will-change-transform ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <h4 className="avenir-600 text-base text-white mb-4">
               Quick Links
             </h4>
@@ -97,7 +138,9 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Services */}
-          <div>
+          <div className={`transition-all duration-700 delay-300 ease-out will-change-transform ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <h4 className="avenir-600 text-base text-white mb-4">
               Services
             </h4>
@@ -120,7 +163,9 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Contact */}
-          <div className="col-span-2 lg:col-span-1">
+          <div className={`col-span-2 lg:col-span-1 transition-all duration-700 delay-400 ease-out will-change-transform ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <h4 className="avenir-600 text-base text-white mb-4">
               Contact
             </h4>
@@ -181,7 +226,9 @@ export default function Footer() {
         <div className="my-6 sm:my-12 border-t border-white/10" />
 
         {/* Copyright & Legal Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 avenir-500">
+        <div className={`flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 avenir-500 transition-all duration-700 delay-500 ease-out will-change-transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
           <p>&copy; 2026 Two Lemurs. All rights reserved.</p>
           <div className="avenir-500 flex items-center gap-6 text-sm">
             <a
@@ -209,14 +256,17 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Giant Bottom Brand Logo */}
+        {/* Giant Bottom Brand Logo with Masked Roll-up */}
         <div className="mt-8 sm:mt-12 flex justify-center overflow-hidden pointer-events-none select-none -mb-1 sm:-mb-4">
-          <div className="gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-none sm:leading-[0.88] text-white whitespace-nowrap text-center">
+          <div className={`gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-none sm:leading-[0.88] text-white whitespace-nowrap text-center transition-all duration-1000 delay-500 ease-out will-change-transform ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
+          }`}>
             Two Lemurs
           </div>
         </div>
 
       </div>
     </footer>
+    </>
   );
 }

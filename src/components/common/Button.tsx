@@ -41,9 +41,9 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const sizeStyles: Record<'sm' | 'md' | 'lg', string> = {
-    sm: 'px-3.5 py-1.5 text-xs gap-1.5 avenir-500',
-    md: 'px-5 py-2.5 text-sm sm:text-base gap-2 avenir-500',
-    lg: 'px-6 py-3 sm:text-base gap-2.5 avenir-500',
+    sm: 'px-3.5 py-1.5 text-sm leading-[18px] sm:leading-[20px] gap-1.5 avenir-500',
+    md: 'px-5 py-2.5 text-sm sm:text-base leading-[20px] sm:leading-[24px] gap-2 avenir-500',
+    lg: 'px-6 py-3 sm:text-base leading-[24px] gap-2.5 avenir-500',
   };
 
   const baseStyles =

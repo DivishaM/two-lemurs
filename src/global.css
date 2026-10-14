@@ -88,6 +88,19 @@
   animation: marquee 25s linear infinite;
 }
 
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
 .container {
   width: 90%;
   max-width: 1280px;
