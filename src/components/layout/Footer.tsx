@@ -1,4 +1,9 @@
+import { useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const socialLinks = [
   { name: 'Instagram', icon: './assets/instagram.svg', href: '#' },
@@ -20,21 +25,165 @@ const serviceLinks = [
 ];
 
 export default function Footer() {
-  return (
-    <footer className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden relative">
-      <div className="container">
+  const footerRef = useRef<HTMLElement>(null);
+  const topRowRef = useRef<HTMLDivElement>(null);
+  const divider1Ref = useRef<HTMLDivElement>(null);
+  const divider2Ref = useRef<HTMLDivElement>(null);
+  const gridColsRef = useRef<HTMLDivElement>(null);
+  const legalRowRef = useRef<HTMLDivElement>(null);
+  const logoWrapperRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isReduced) return;
+
+    const ctx = gsap.context(() => {
+      // 1. Dividers smooth line expansion on scroll
+      if (divider1Ref.current) {
+        gsap.fromTo(
+          divider1Ref.current,
+          { scaleX: 0, transformOrigin: 'left' },
+          {
+            scaleX: 1,
+            duration: 1.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: footerRef.current,
+              start: 'top 85%',
+            },
+          }
+        );
+      }
+
+      if (divider2Ref.current) {
+        gsap.fromTo(
+          divider2Ref.current,
+          { scaleX: 0, transformOrigin: 'left' },
+          {
+            scaleX: 1,
+            duration: 1.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: divider2Ref.current,
+              start: 'top 92%',
+            },
+          }
+        );
+      }
+
+      // 2. Top Header Row: Logo & Socials entrance
+      if (topRowRef.current) {
+        const socials = topRowRef.current.querySelectorAll('.footer-social-btn');
+        gsap.fromTo(
+          topRowRef.current.querySelector('.footer-logo-group'),
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: footerRef.current,
+              start: 'top 85%',
+            },
+          }
+        );
+
+        if (socials.length > 0) {
+          gsap.fromTo(
+            socials,
+            { scale: 0.8, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 0.7,
+              stagger: 0.08,
+              ease: 'back.out(1.8)',
+              scrollTrigger: {
+                trigger: footerRef.current,
+                start: 'top 85%',
+              },
+            }
+          );
+        }
+      }
+
+      // 3. Navigation Columns Cascade
+      if (gridColsRef.current) {
+        gsap.fromTo(
+          gridColsRef.current.children,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: gridColsRef.current,
+              start: 'top 88%',
+            },
+          }
+        );
+      }
+
+      // 4. Copyright & Legal Row
+      if (legalRowRef.current) {
+        gsap.fromTo(
+          legalRowRef.current,
+          { y: 15, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: legalRowRef.current,
+              start: 'top 95%',
+            },
+          }
+        );
+      }
+
+      // 5. Giant Brand Text: Slower, cinematic bottom-to-top reveal with word stagger
+      if (logoWrapperRef.current) {
+        const words = logoWrapperRef.current.querySelectorAll('.footer-big-word');
+        gsap.fromTo(
+          words,
+          { yPercent: 125, opacity: 0 },
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 2.0,
+            stagger: 0.18,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: logoWrapperRef.current,
+              start: 'top 95%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <footer ref={footerRef} className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden relative">
+      <div className="container">
         {/* Top Header Row: Logo & Socials */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-3">
-            <a href="/" title='logo' className="inline-block">
+        <div ref={topRowRef} className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="footer-logo-group flex flex-col gap-3 will-change-transform">
+            <a href="/" title="logo" className="inline-block group">
               <img
                 src="./assets/Logo.svg"
                 alt="Two Lemurs"
-                className="h-8 w-auto brightness-0 invert md:w-auto w-[150px]"
+                className="h-8 w-auto brightness-0 invert md:w-auto w-[150px] transition-transform duration-300 group-hover:scale-105"
               />
             </a>
-            {/* Mobile Tagline (shows directly below logo on mobile) */}
+            {/* Mobile Tagline */}
             <p className="lg:hidden text-base avenir-500 text-slate-400 leading-relaxed max-w-sm">
               Helping growing businesses solve the problems growth creates.
             </p>
@@ -48,33 +197,32 @@ export default function Footer() {
                 href={social.href}
                 aria-label={social.name}
                 title={social.name}
-                className="group flex size-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-white/30 hover:bg-white/10"
+                className="footer-social-btn group flex size-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:-translate-y-1 will-change-transform"
               >
                 <img
                   src={social.icon}
                   alt={social.name}
-                  className="size-4 transition-transform duration-300 group-hover:-rotate-12"
+                  className="size-4 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
                 />
               </a>
             ))}
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="my-6 sm:my-12 border-t border-white/10" />
+        {/* Divider 1 */}
+        <div ref={divider1Ref} className="my-6 sm:my-12 border-t border-white/10 will-change-transform" />
 
         {/* Navigation & Contact Links */}
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
-
+        <div ref={gridColsRef} className="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Column 1: Desktop Tagline */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block will-change-transform">
             <p className="text-base avenir-500 text-slate-400 leading-relaxed max-w-xs">
               Helping growing businesses solve the problems growth creates.
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <div className="will-change-transform">
             <h4 className="avenir-600 text-base text-white mb-4">
               Quick Links
             </h4>
@@ -86,8 +234,10 @@ export default function Footer() {
                     title={link.label}
                     className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                   >
-                    <span>{link.label}</span>
-                    <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">
+                      {link.label}
+                    </span>
+                    <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 -translate-x-2 translate-y-2 transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
                       <ArrowUpRight size={16} />
                     </span>
                   </a>
@@ -97,7 +247,7 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Services */}
-          <div>
+          <div className="will-change-transform">
             <h4 className="avenir-600 text-base text-white mb-4">
               Services
             </h4>
@@ -109,8 +259,10 @@ export default function Footer() {
                     title={link.label}
                     className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                   >
-                    <span>{link.label}</span>
-                    <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">
+                      {link.label}
+                    </span>
+                    <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 -translate-x-2 translate-y-2 transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
                       <ArrowUpRight size={16} />
                     </span>
                   </a>
@@ -120,7 +272,7 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Contact */}
-          <div className="col-span-2 lg:col-span-1">
+          <div className="col-span-2 lg:col-span-1 will-change-transform">
             <h4 className="avenir-600 text-base text-white mb-4">
               Contact
             </h4>
@@ -131,11 +283,11 @@ export default function Footer() {
                   title="+61 255 503 559"
                   className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <Phone size={14} className="shrink-0 text-slate-400" />
+                  <div className="flex items-center gap-2.5 transition-transform duration-200 group-hover:translate-x-1">
+                    <Phone size={14} className="shrink-0 text-slate-400 transition-colors duration-200 group-hover:text-primary" />
                     <span>+61 255 503 559</span>
                   </div>
-                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 -translate-x-2 translate-y-2 transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
                     <ArrowUpRight size={16} />
                   </span>
                 </a>
@@ -143,14 +295,14 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:info@twolemurs.com"
-                  title='info@twolemurs.com'
+                  title="info@twolemurs.com"
                   className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <Mail size={14} className="shrink-0 text-slate-400" />
+                  <div className="flex items-center gap-2.5 transition-transform duration-200 group-hover:translate-x-1">
+                    <Mail size={14} className="shrink-0 text-slate-400 transition-colors duration-200 group-hover:text-primary" />
                     <span>info@twolemurs.com</span>
                   </div>
-                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 -translate-x-2 translate-y-2 transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
                     <ArrowUpRight size={16} />
                   </span>
                 </a>
@@ -160,62 +312,64 @@ export default function Footer() {
                   href="https://maps.google.com/?q=123+Demo+Street,+Richmond+VIC+3121,+Australia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  title='123 Demo Street, Richmond VIC 3121, Australia'
+                  title="123 Demo Street, Richmond VIC 3121, Australia"
                   className="group flex items-center justify-between border-b border-transparent pb-1.5 transition-all duration-200 hover:border-white/10 hover:text-white"
                 >
-                  <div className="flex items-start gap-2.5">
-                    <MapPin size={14} className="shrink-0 mt-0.5 text-slate-400" />
+                  <div className="flex items-start gap-2.5 transition-transform duration-200 group-hover:translate-x-1">
+                    <MapPin size={14} className="shrink-0 mt-0.5 text-slate-400 transition-colors duration-200 group-hover:text-primary" />
                     <span>123 Demo Street, Richmond VIC 3121, Australia</span>
                   </div>
-                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 transition-all duration-200 group-hover:opacity-100">
+                  <span className="flex size-6 shrink-0 items-center justify-center text-white opacity-0 -translate-x-2 translate-y-2 transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0">
                     <ArrowUpRight size={16} />
                   </span>
                 </a>
               </li>
             </ul>
           </div>
-
         </div>
 
-        {/* Divider */}
-        <div className="my-6 sm:my-12 border-t border-white/10" />
+        {/* Divider 2 */}
+        <div ref={divider2Ref} className="my-6 sm:my-12 border-t border-white/10 will-change-transform" />
 
         {/* Copyright & Legal Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 avenir-500">
+        <div ref={legalRowRef} className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 avenir-500 will-change-transform">
           <p>&copy; 2026 Two Lemurs. All rights reserved.</p>
           <div className="avenir-500 flex items-center gap-6 text-sm">
             <a
               href="#privacy"
-              title='Privacy Policy'
+              title="Privacy Policy"
               className="group inline-flex items-center gap-1 border-b border-transparent pb-0.5 transition-all duration-200 hover:border-white/20 hover:text-white"
             >
               <span>Privacy Policy</span>
               <ArrowUpRight
                 size={14}
-                className="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                className="opacity-0 -translate-x-1 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
               />
             </a>
             <a
               href="#terms"
-              title='Terms of Service'
+              title="Terms of Service"
               className="group inline-flex items-center gap-1 border-b border-transparent pb-0.5 transition-all duration-200 hover:border-white/20 hover:text-white"
             >
               <span>Terms of Service</span>
               <ArrowUpRight
                 size={14}
-                className="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                className="opacity-0 -translate-x-1 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
               />
             </a>
           </div>
         </div>
 
-        {/* Giant Bottom Brand Logo */}
-        <div className="mt-8 sm:mt-12 flex justify-center overflow-hidden pointer-events-none select-none -mb-1 sm:-mb-4">
-          <div className="gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-none sm:leading-[0.88] text-white whitespace-nowrap text-center">
-            Two Lemurs
+        {/* Giant Bottom Brand Logo: Slower, majestic bottom-to-top reveal with word stagger */}
+        <div
+          ref={logoWrapperRef}
+          className="mt-8 sm:mt-12 flex justify-center items-center overflow-hidden pointer-events-none select-none -mb-1 sm:-mb-4"
+        >
+          <div className="gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-none sm:leading-[0.88] text-white whitespace-nowrap text-center flex gap-[0.24em]">
+            <span className="footer-big-word inline-block will-change-transform">Two</span>
+            <span className="footer-big-word inline-block will-change-transform">Lemurs</span>
           </div>
         </div>
-
       </div>
     </footer>
   );

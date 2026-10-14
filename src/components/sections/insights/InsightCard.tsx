@@ -7,13 +7,13 @@ interface InsightCardProps {
 
 export default function InsightCard({ insight }: InsightCardProps) {
   return (
-    <article className="flex h-full flex-col border border-neutral-100 bg-white">
+    <article className="insight-card group flex h-full flex-col border border-neutral-100 bg-white transition-colors duration-300 hover:border-typography-dark">
       <div className="overflow-hidden">
         <img
           src={insight.image}
           alt={insight.title}
-
-          className="w-full object-contain transition-transform duration-700 ease-out hover:scale-110"
+          className="insight-card-img w-full object-contain transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105 will-change-transform"
+          loading="lazy"
         />
       </div>
 

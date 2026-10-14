@@ -100,3 +100,165 @@
     max-width: 1440px;
   }
 }
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Ripple animation on button click */
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(0);
+  animation: rpl 0.75s ease-out forwards;
+  pointer-events: none;
+  z-index: 20;
+}
+
+@keyframes rpl {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Confetti particles */
+.confetti-particle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Floating ambient gradient orbs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  animation: orbDrift 16s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift {
+  to {
+    transform: translate(60px, 45px) scale(1.14);
+  }
+}
+
+/* Card 3D tilt & dynamic cursor spotlight */
+.interactive-card {
+  position: relative;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  will-change: transform;
+}
+
+.interactive-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(350px circle at var(--mx, 50%) var(--my, 50%), rgba(30, 96, 242, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.interactive-card:hover::before {
+  opacity: 1;
+}
+
+/* Conic gradient animated border glow on card hover */
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.conic-glow {
+  position: relative;
+}
+
+.conic-glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--a), transparent 0 60%, #1E60F2, #38BDF8, transparent);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: rotateBorder 3.5s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.conic-glow:hover::after,
+.conic-glow:focus-within::after {
+  opacity: 1;
+}
+
+@keyframes rotateBorder {
+  to {
+    --a: 360deg;
+  }
+}
+
+/* Marquee item pulse */
+.marquee-item-lit {
+  border-color: rgba(30, 96, 242, 0.8) !important;
+  box-shadow: 0 0 25px -4px rgba(30, 96, 242, 0.45);
+  transform: translateY(-4px) scale(1.04);
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Heading word reveal mask */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.word-mask > span {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-orb {
+    animation: none !important;
+  }
+}

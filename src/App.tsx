@@ -10,21 +10,32 @@ import ContactSection from './components/sections/contact/ContactSection';
 import InsightsSection from './components/sections/insights/InsightsSection';
 import Footer from './components/layout/Footer';
 
+import { SmoothScrollProvider } from './context/SmoothScrollContext';
+import { ToastProvider } from './context/ToastContext';
+import ScrollProgressBar from './components/common/ScrollProgressBar';
+import CustomCursor from './components/common/CustomCursor';
+
 function App() {
   return (
-    <>
-      <Navbar />
-      <HeroSection />
-      <ClientsSection />
-      <ServicesSection />
-      <BrandSystemSection />
-      <ProcessSection />
-      <ServicesMarquee />
-      <FAQSection />
-      <ContactSection />
-      <InsightsSection />
-      <Footer />
-    </>
+    <ToastProvider>
+      <SmoothScrollProvider>
+        <ScrollProgressBar />
+        <CustomCursor />
+        <Navbar />
+        <main>
+          <HeroSection />
+          <ClientsSection />
+          <ServicesSection />
+          <BrandSystemSection />
+          <ProcessSection />
+          <ServicesMarquee />
+          <FAQSection />
+          <ContactSection />
+          <InsightsSection />
+        </main>
+        <Footer />
+      </SmoothScrollProvider>
+    </ToastProvider>
   );
 }
 
