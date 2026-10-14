@@ -1,18 +1,29 @@
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Insight } from "../../../data/insightsData";
 
 interface InsightCardProps {
   insight: Insight;
+  index?: number;
 }
 
-export default function InsightCard({ insight }: InsightCardProps) {
+export default function InsightCard({ insight, index = 0 }: InsightCardProps) {
   return (
-    <article className="flex h-full flex-col border border-neutral-100 bg-white">
+    <motion.article
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{
+        duration: 0.7,
+        delay: (index % 3) * 0.1,
+        ease: [0.2, 0.7, 0.2, 1],
+      }}
+      className="flex h-full flex-col border border-neutral-100 bg-white"
+    >
       <div className="overflow-hidden">
         <img
           src={insight.image}
           alt={insight.title}
-
           className="w-full object-contain transition-transform duration-700 ease-out hover:scale-110"
         />
       </div>
@@ -41,6 +52,6 @@ export default function InsightCard({ insight }: InsightCardProps) {
           </div>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

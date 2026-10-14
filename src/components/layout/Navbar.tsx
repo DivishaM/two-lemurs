@@ -51,7 +51,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="avenir-500 hidden md:block flex-shrink-0">
-          <Button label="Talk to Sales" variant="primary" icon="arrow-up-right" size="md" />
+          <Button label="Talk to Sales" variant="primary" icon="arrow-up-right" size="sm" />
         </div>
 
         {/* Mobile Hamburger */}

@@ -1,12 +1,24 @@
+import { motion } from 'framer-motion';
 import type { ProcessStepData } from "../../../data/processData";
 
 interface ProcessStepProps {
     step: ProcessStepData;
+    index?: number;
 }
 
-export default function ProcessStep({ step }: ProcessStepProps) {
+export default function ProcessStep({ step, index = 0 }: ProcessStepProps) {
     return (
-        <article className="group relative flex flex-col overflow-hidden border-l border-t border-b border-neutral-100 bg-white p-5 sm:p-[30px] cursor-pointer">
+        <motion.article
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+                duration: 0.7,
+                delay: index * 0.1,
+                ease: [0.2, 0.7, 0.2, 1],
+            }}
+            className="group relative flex flex-col overflow-hidden border-l border-t border-b border-neutral-100 bg-white p-5 sm:p-[30px] cursor-pointer"
+        >
             {/* Animated background */}
             <div className="absolute inset-0 translate-y-[101%] bg-typography-dark transition-transform duration-500 ease-in-out group-hover:translate-y-0" />
 
@@ -19,10 +31,20 @@ export default function ProcessStep({ step }: ProcessStepProps) {
                     {step.title}
                 </h3>
 
-                <p className="relative z-10 mt-3 text-sm md:text-base text-typography-light transition-colors duration-300 group-hover:text-white avenir-400">
+                <motion.p
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{
+                        duration: 0.6,
+                        delay: index * 0.1 + 0.18,
+                        ease: [0.2, 0.7, 0.2, 1] as const,
+                    }}
+                    className="relative z-10 mt-3 text-sm md:text-base text-typography-light transition-colors duration-300 group-hover:text-white avenir-400"
+                >
                     {step.description}
-                </p>
+                </motion.p>
             </div>
-        </article>
+        </motion.article>
     );
 }
