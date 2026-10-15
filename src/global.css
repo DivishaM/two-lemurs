@@ -36,7 +36,7 @@
 
 @font-face {
   font-family: 'Century Gothic Paneuropean';
-  src: url('/fonts/century-gothic/CenturyGothic-Regular.ttf') format('truetype');
+  src: url('/fonts/century-gothic/CenturyGothic-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -44,15 +44,7 @@
 
 @font-face {
   font-family: 'Century Gothic Paneuropean';
-  src: url('/fonts/century-gothic/CenturyGothic-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Century Gothic Paneuropean';
-  src: url('/fonts/century-gothic/CenturyGothic-Bold.ttf') format('truetype');
+  src: url('/fonts/century-gothic/CenturyGothic-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -60,16 +52,8 @@
 
 @font-face {
   font-family: 'Century Gothic Paneuropean';
-  src: url('/fonts/century-gothic/CenturyGothic-ExtraBold.ttf') format('truetype');
+  src: url('/fonts/century-gothic/CenturyGothic-ExtraBold.woff2') format('woff2');
   font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Century Gothic Paneuropean';
-  src: url('/fonts/century-gothic/CenturyGothic-Black.ttf') format('truetype');
-  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }

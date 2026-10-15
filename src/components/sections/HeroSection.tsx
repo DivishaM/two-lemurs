@@ -155,11 +155,14 @@ export default function HeroSection() {
       >
         <div ref={bgMouseRef} className="w-full h-full will-change-transform">
           <img
-            src="./images/hero-image.png"
+            src="./images/hero-image.webp"
             alt="Two Lemurs Hero Graphic"
+            width={1448}
+            height={1086}
             className="h-full w-full object-cover object-right"
             loading="eager"
             decoding="async"
+            fetchPriority="high"
           />
         </div>
       </div>
@@ -168,11 +171,14 @@ export default function HeroSection() {
       <div className="relative flex h-[48vh] sm:h-[70vh] w-full items-center justify-center overflow-hidden xl:hidden pt-4 sm:pt-6 select-none">
         <img
           ref={mobileImgRef}
-          src="./images/hero-image.png"
+          src="./images/hero-image.webp"
           alt="Two Lemurs Hero Graphic"
+          width={1448}
+          height={1086}
           className="pointer-events-none h-full w-auto max-w-none object-contain -translate-x-[12%] sm:-translate-x-[10%] will-change-transform"
           loading="eager"
           decoding="async"
+          fetchPriority="high"
         />
       </div>
 
