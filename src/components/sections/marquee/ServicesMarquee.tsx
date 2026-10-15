@@ -37,7 +37,7 @@ export default function ServicesMarquee() {
     >
       <div
         ref={trackRef}
-        className="flex w-max animate-marquee items-center gap-9 px-20 will-change-transform hover:[animation-play-state:paused]"
+        className="flex w-max animate-marquee items-center md:gap-16 gap-8 px-20 will-change-transform hover:[animation-play-state:paused]"
       >
         {[...servicesData, ...servicesData, ...servicesData].map((service, index) => (
           <MarqueeItem key={`${service}-${index}`} title={service} />

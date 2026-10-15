@@ -33,10 +33,13 @@ export default function InsightCard({ insight }: InsightCardProps) {
             <a
               href={insight.link}
               title={insight.title}
-              className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-typography-dark transition-colors duration-200 hover:text-primary md:text-sm avenir-600"
+              className="group/btn inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold text-typography-dark transition-colors duration-200 hover:text-primary md:text-sm avenir-600"
             >
-              Read Insight
-              <ArrowUpRight size={14} />
+              <span>Read Insight</span>
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:rotate-45"
+              />
             </a>
           </div>
         </div>

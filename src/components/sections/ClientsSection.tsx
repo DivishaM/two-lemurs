@@ -97,12 +97,12 @@ export default function ClientsSection() {
           {marqueeClients.map((client, index) => (
             <div
               key={`${client.name}-${index}`}
-              className="client-tile flex h-[60px] w-[120px] sm:h-[100px] sm:w-[200px] flex-shrink-0 items-center justify-center border border-white/5 bg-dark-card px-3 sm:px-4 transition-colors duration-300 hover:border-white/20"
+              className="client-tile group flex h-[60px] w-[120px] sm:h-[100px] sm:w-[200px] flex-shrink-0 items-center justify-center border border-white/5 bg-dark-card px-3 sm:px-4 transition-all duration-300 hover:border-white/20 cursor-pointer"
             >
               <img
                 src={client.logo}
                 alt={client.name}
-                className="max-h-[38px] max-w-[84px] sm:max-h-[80px] sm:max-w-[142px] w-auto h-auto object-contain opacity-90 brightness-110"
+                className="max-h-[38px] max-w-[84px] sm:max-h-[80px] sm:max-w-[142px] w-auto h-auto object-contain opacity-75 brightness-100 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:brightness-200"
               />
             </div>
           ))}

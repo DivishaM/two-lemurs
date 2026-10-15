@@ -47,7 +47,14 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
-    // Global smooth anchor navigation
+    const getScrollOffset = () => {
+      // Docked header height is 72px on desktop (md:), 58px on mobile (<768px).
+      // Setting offset to -72 (desktop) / -58 (mobile) places the target section
+      // flush directly below the header with 0px gap and zero leakage from previous sections.
+      return typeof window !== 'undefined' && window.innerWidth < 768 ? -58 : -72;
+    };
+
+    // Global smooth anchor navigation using section IDs
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest('a');
       if (!target) return;
@@ -57,13 +64,31 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
         const element = document.querySelector(href);
         if (element) {
           e.preventDefault();
+          try {
+            window.history.pushState(null, '', href);
+          } catch {
+            // Ignore pushState errors in restricted environments
+          }
           lenis.scrollTo(element as HTMLElement, {
-            offset: -80,
-            duration: 1.4,
+            offset: getScrollOffset(),
+            duration: 1.2,
           });
         }
       }
     };
+
+    // Smooth scroll to initial section if page loaded with a hash in URL
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const initialElement = document.querySelector(window.location.hash);
+      if (initialElement) {
+        setTimeout(() => {
+          lenis.scrollTo(initialElement as HTMLElement, {
+            offset: getScrollOffset(),
+            duration: 1.0,
+          });
+        }, 300);
+      }
+    }
 
     document.addEventListener('click', handleAnchorClick);
 
@@ -83,9 +108,10 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
   const scrollTo = (target: string | HTMLElement | number, options?: { offset?: number; duration?: number }) => {
     if (lenisRef.current) {
+      const defaultOffset = typeof window !== 'undefined' && window.innerWidth < 768 ? -58 : -72;
       lenisRef.current.scrollTo(target, {
-        offset: options?.offset ?? -80,
-        duration: options?.duration ?? 1.4,
+        offset: options?.offset ?? defaultOffset,
+        duration: options?.duration ?? 1.2,
       });
     } else {
       if (typeof target === 'number') {

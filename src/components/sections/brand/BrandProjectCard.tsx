@@ -203,7 +203,7 @@ export default function BrandProjectCard({
         className="brand-card-content w-full lg:flex-1 bg-white p-4 sm:p-5 lg:p-5 xl:p-6 flex flex-col justify-between min-w-0 min-h-0 transition-colors duration-300 will-change-transform overflow-hidden"
       >
         <div>
-          {/* Headline with kinetic rolling text on hover (Heading remains dark, never turns blue) */}
+          {/* Headline with single entrance reveal animation on scroll, no repetitive hover flashing */}
           <h3
             ref={titleRef}
             className="avenir-600 text-lg sm:text-xl xl:text-2xl text-typography-main tracking-tight cursor-default"
@@ -214,30 +214,15 @@ export default function BrandProjectCard({
                 className="word-mask mr-[0.22em] last:mr-0 inline-block overflow-hidden align-top"
               >
                 <span className="word-inner inline-block will-change-transform">
-                  <span className="relative inline-flex flex-col overflow-hidden h-[1.32em] align-top select-none">
-                    {/* Layer 1: Normal state */}
-                    <span
-                      className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:-translate-y-full text-typography-main"
-                      style={{ transitionDelay: `${i * 45}ms` }}
-                    >
-                      {word}
-                    </span>
-                    {/* Layer 2: Rolled state on hover (Remains dark, NOT blue) */}
-                    <span
-                      className="inline-block absolute left-0 top-0 transition-transform duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)] translate-y-full group-hover:translate-y-0 text-typography-main font-semibold"
-                      style={{ transitionDelay: `${i * 45}ms` }}
-                    >
-                      {word}
-                    </span>
-                  </span>
+                  {word}
                 </span>
               </span>
             ))}
 
-            {/* Blue square dot marker with 180deg spin and scale bounce */}
+            {/* Blue square dot marker */}
             <span
               ref={dotRef}
-              className="inline-block h-2 w-2 bg-primary ml-1.5 align-middle flex-shrink-0 will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-135 group-hover:rotate-180"
+              className="inline-block h-2 w-2 bg-primary ml-1.5 align-middle flex-shrink-0 will-change-transform"
             />
           </h3>
 

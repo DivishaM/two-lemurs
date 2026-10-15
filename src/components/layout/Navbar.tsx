@@ -162,18 +162,11 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 title={link.label}
-                className={`nav-link-item group relative text-sm lg:text-base xl:text-lg avenir-500 whitespace-nowrap py-1 ${
-                  isActive ? 'text-primary font-semibold' : 'text-typography-main'
+                className={`nav-link-item group relative text-sm lg:text-base xl:text-lg avenir-500 whitespace-nowrap py-1 transition-colors duration-200 ${
+                  isActive ? 'text-primary font-semibold' : 'text-typography-main hover:text-primary'
                 }`}
               >
-                <span className="relative inline-block overflow-hidden h-[1.35em] align-top select-none">
-                  <span className="block transition-transform duration-400 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:-translate-y-full">
-                    {link.label}
-                  </span>
-                  <span className="block absolute inset-0 transition-transform duration-400 ease-[cubic-bezier(0.2,0.7,0.2,1)] translate-y-full group-hover:translate-y-0 text-primary">
-                    {link.label}
-                  </span>
-                </span>
+                {link.label}
                 <span
                   className={`absolute bottom-0 left-0 h-[1.5px] w-full origin-left transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
                     isActive
@@ -224,7 +217,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={`group relative py-1 text-sm avenir-500 transition-colors duration-200 ${
-                  isActive ? 'text-primary font-semibold' : 'text-typography-main'
+                  isActive ? 'text-primary font-semibold' : 'text-typography-main hover:text-primary'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -237,7 +230,7 @@ export default function Navbar() {
               </a>
             );
           })}
-          <div className="pt-2 w-full">
+          <div className="pt-2 w-full" onClick={() => setIsOpen(false)}>
             <Button
               href="#contact"
               label="Talk to Sales"

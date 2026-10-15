@@ -136,6 +136,7 @@ export const Button: React.FC<ButtonProps> = ({
         target={target}
         rel={rel}
         onPointerDown={handlePointerDown}
+        onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
         className={combinedClasses}
       >
         {content}

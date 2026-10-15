@@ -22,7 +22,7 @@ export default function ContactForm() {
     e.preventDefault();
 
     // Validation
-    if (!name.trim() || !email.trim() || !company.trim() || !budget) {
+    if (!name.trim() || !email.trim() || !company.trim() || !service) {
       if (formRef.current) {
         gsap.fromTo(
           formRef.current,
@@ -126,14 +126,18 @@ export default function ContactForm() {
 
         {/* What You Need */}
         <div>
-          <label className="text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90">
-            What You Need
+          <label
+            htmlFor="service-select"
+            className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
+          >
+            What You Need <span className="text-red-500">*</span>
           </label>
-          <div className="relative mt-3">
+          <div className="group relative mt-3">
             <select
+              id="service-select"
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className={`w-full appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
+              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
                 service ? "text-white" : "text-typography-light"
               }`}
             >
@@ -155,21 +159,25 @@ export default function ContactForm() {
             </select>
             <ChevronDown
               size={16}
-              className="pointer-events-none absolute right-0 top-1 text-typography-light"
+              className="pointer-events-none absolute right-0 top-1 text-typography-light transition-colors duration-300 group-hover:text-white"
             />
           </div>
         </div>
 
         {/* Estimate Budget */}
         <div>
-          <label className="text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90">
-            Estimate Budget <span className="text-red-500">*</span>
+          <label
+            htmlFor="budget-select"
+            className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
+          >
+            Estimate Budget
           </label>
-          <div className="relative mt-3">
+          <div className="group relative mt-3">
             <select
+              id="budget-select"
               value={budget}
               onChange={(e) => setBudget(e.target.value)}
-              className={`w-full appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
+              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
                 budget ? "text-white" : "text-typography-light"
               }`}
             >
@@ -188,7 +196,7 @@ export default function ContactForm() {
             </select>
             <ChevronDown
               size={16}
-              className="pointer-events-none absolute right-0 top-1 text-typography-light"
+              className="pointer-events-none absolute right-0 top-1 text-typography-light transition-colors duration-300 group-hover:text-white"
             />
           </div>
         </div>
@@ -213,7 +221,7 @@ export default function ContactForm() {
         ref={buttonRef}
         type="submit"
         disabled={isSubmitting}
-        className="mt-8 flex w-full items-center justify-center gap-2 bg-primary px-5 py-3 text-xs md:text-sm font-medium text-white transition-colors duration-200 hover:bg-primary-hover disabled:opacity-70 cursor-pointer"
+        className="group mt-8 flex w-full items-center justify-center gap-2 bg-primary px-5 py-3 text-xs md:text-sm font-medium text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-md hover:shadow-primary/25 disabled:opacity-70 cursor-pointer active:scale-[0.99]"
       >
         {isSubmitting ? (
           <>
@@ -223,7 +231,10 @@ export default function ContactForm() {
         ) : (
           <>
             <span>Submit</span>
-            <ArrowUpRight size={16} />
+            <ArrowUpRight
+              size={16}
+              className="transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:rotate-45"
+            />
           </>
         )}
       </button>
