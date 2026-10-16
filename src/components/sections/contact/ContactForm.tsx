@@ -192,12 +192,12 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
         </div>
 
         {/* What You Need */}
-        <div ref={serviceDropdownRef} className="relative flex flex-col justify-between">
+        <div ref={serviceDropdownRef} className="relative">
           <label
             onClick={() => setIsServiceOpen((prev) => !prev)}
-            className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
+            className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white flex items-center h-5"
           >
-            What You Need <span className="text-red-500">*</span>
+            What You Need <span className="text-red-500 ml-1">*</span>
           </label>
           <div className="group relative mt-3">
             <div
@@ -213,7 +213,7 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
                   setIsServiceOpen((prev) => !prev);
                 }
               }}
-              className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-600 bg-transparent pb-2 pr-6 text-left text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none"
+              className="flex w-full min-h-[32px] md:min-h-[34px] cursor-pointer items-center justify-between border-b border-neutral-600 bg-transparent pb-2 pr-6 text-left text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none"
             >
               {selectedServices.length === 0 ? (
                 <span className="text-sm md:text-base text-typography-light">
@@ -289,19 +289,20 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
         </div>
 
         {/* What's your estimated budget? */}
-        <div className="flex flex-col justify-between">
+        <div>
           <label
             htmlFor="budget-select"
-            className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
+            className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white flex items-center h-5"
           >
-            What's your estimated budget? <span className="text-typography-light font-normal text-xs">(AUD)</span>
+            <span>What's your estimated budget?</span>
+            <span className="text-typography-light font-normal text-xs ml-1">(AUD)</span>
           </label>
           <div className="group relative mt-3">
             <select
               id="budget-select"
               value={budget}
               onChange={(e) => setBudget(e.target.value)}
-              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
+              className={`w-full h-[32px] md:h-[34px] cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
                 budget ? "text-white" : "text-typography-light"
               }`}
             >
