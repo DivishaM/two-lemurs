@@ -115,7 +115,7 @@ export default function FAQSection() {
               ref={descRef}
               className="mt-3 text-sm font-medium text-typography-light md:text-base lg:text-lg avenir-500 max-w-[450px] w-[90%]"
             >
-              Lorem ipsum dolor sit amet consectetur. Quisque pulvinar quam metus lacus. Cursus pharetra
+              Everything you need to know about working with us.
             </p>
           </div>
 

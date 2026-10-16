@@ -171,7 +171,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-dark text-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden relative">
+    <footer ref={footerRef} className="bg-typography-dark text-white  overflow-hidden relative">
       <div className="container">
         {/* Top Header Row: Logo & Socials */}
         <div ref={topRowRef} className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">

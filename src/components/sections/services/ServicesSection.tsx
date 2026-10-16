@@ -80,7 +80,7 @@ export default function ServicesSection() {
     return () => ctx.revert();
   }, []);
 
-  const headingWords = ['Services', 'That', 'Make', 'an', 'Impact'];
+  const headingWords = ['What', 'can', 'we', 'help', 'you', 'with?'];
 
   return (
     <section ref={sectionRef} id="services" className="bg-white py-16 sm:py-20 lg:py-[136px]">

@@ -31,7 +31,7 @@ function App() {
           <ServicesMarquee />
           <FAQSection />
           <ContactSection />
-          <InsightsSection />
+          {/* <InsightsSection /> */}
         </main>
         <Footer />
       </SmoothScrollProvider>

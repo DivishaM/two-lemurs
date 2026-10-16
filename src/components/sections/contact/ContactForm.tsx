@@ -1,28 +1,80 @@
-import React, { useState, useRef } from "react";
-import { ChevronDown, ArrowUpRight, Loader2 } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronDown, ArrowUpRight, Loader2, Check, X } from "lucide-react";
 import { useToast } from "../../../context/ToastContext";
 import { burstConfetti } from "../../../utils/effects";
 import gsap from "gsap";
 
-export default function ContactForm() {
+export interface EnquiryDetails {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  services: string[];
+  budget: string;
+  message: string;
+  submittedAt: string;
+}
+
+export const SERVICE_OPTIONS = [
+  "Logo Design",
+  "Brand Identity & Branding",
+  "Website & UI/UX Design",
+  "Graphic & Marketing Design",
+  "Packaging & Print Design",
+  "Other",
+] as const;
+
+interface ContactFormProps {
+  onSubmitEnquiry?: (details: EnquiryDetails) => void;
+}
+
+export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
-  const [service, setService] = useState("");
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [isServiceOpen, setIsServiceOpen] = useState(false);
   const [budget, setBudget] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formRef = useRef<HTMLFormElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const serviceDropdownRef = useRef<HTMLDivElement>(null);
   const { showToast } = useToast();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        serviceDropdownRef.current &&
+        !serviceDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsServiceOpen(false);
+      }
+    };
+
+    if (isServiceOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isServiceOpen]);
+
+  const toggleService = (option: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(option)
+        ? prev.filter((item) => item !== option)
+        : [...prev, option]
+    );
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validation
-    if (!name.trim() || !email.trim() || !company.trim() || !service) {
+    if (!name.trim() || !email.trim() || !company.trim() || selectedServices.length === 0) {
       if (formRef.current) {
         gsap.fromTo(
           formRef.current,
@@ -45,6 +97,20 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
 
+    const enquiryDetails: EnquiryDetails = {
+      name: name.trim(),
+      email: email.trim(),
+      company: company.trim(),
+      phone: phone.trim(),
+      services: selectedServices,
+      budget,
+      message: message.trim(),
+      submittedAt: new Date().toISOString(),
+    };
+
+    console.log("Enquiry submitted:", enquiryDetails);
+    onSubmitEnquiry?.(enquiryDetails);
+
     setTimeout(() => {
       setIsSubmitting(false);
 
@@ -59,7 +125,8 @@ export default function ContactForm() {
       setEmail("");
       setCompany("");
       setPhone("");
-      setService("");
+      setSelectedServices([]);
+      setIsServiceOpen(false);
       setBudget("");
       setMessage("");
     }, 900);
@@ -125,73 +192,136 @@ export default function ContactForm() {
         </div>
 
         {/* What You Need */}
-        <div>
+        <div ref={serviceDropdownRef} className="relative">
           <label
-            htmlFor="service-select"
+            onClick={() => setIsServiceOpen((prev) => !prev)}
             className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
           >
             What You Need <span className="text-red-500">*</span>
           </label>
           <div className="group relative mt-3">
-            <select
+            <div
               id="service-select"
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
-                service ? "text-white" : "text-typography-light"
-              }`}
+              role="button"
+              tabIndex={0}
+              aria-haspopup="listbox"
+              aria-expanded={isServiceOpen}
+              onClick={() => setIsServiceOpen((prev) => !prev)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setIsServiceOpen((prev) => !prev);
+                }
+              }}
+              className="flex min-h-[38px] w-full cursor-pointer items-center justify-between border-b border-neutral-600 bg-transparent pb-2 pr-7 text-left transition-colors duration-300 hover:border-white focus:border-white focus:outline-none"
             >
-              <option value="" disabled className="bg-typography-dark text-typography-light text-sm md:text-base">
-                Select a service
-              </option>
-              <option value="Complete Brand Design" className="bg-typography-dark text-white text-sm md:text-base">
-                Complete Brand Design
-              </option>
-              <option value="Web Design" className="bg-typography-dark text-white text-sm md:text-base">
-                Web Design
-              </option>
-              <option value="Digital Strategy" className="bg-typography-dark text-white text-sm md:text-base">
-                Digital Strategy
-              </option>
-              <option value="Product Design" className="bg-typography-dark text-white text-sm md:text-base">
-                Product Design
-              </option>
-            </select>
+              {selectedServices.length === 0 ? (
+                <span className="text-sm md:text-base text-typography-light">
+                  Select a service
+                </span>
+              ) : (
+                <div className="flex flex-wrap items-center gap-1.5 py-0.5">
+                  {selectedServices.map((service) => (
+                    <span
+                      key={service}
+                      className="inline-flex items-center gap-1.5 rounded-sm bg-[#182635] border border-primary/40 px-2 py-0.5 text-xs text-white"
+                    >
+                      <span>{service}</span>
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleService(service);
+                        }}
+                        className="cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                        title={`Remove ${service}`}
+                      >
+                        <X size={11} strokeWidth={2.5} />
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
             <ChevronDown
               size={16}
-              className="pointer-events-none absolute right-0 top-1 text-typography-light transition-colors duration-300 group-hover:text-white"
+              className={`pointer-events-none absolute right-0 top-2 text-typography-light transition-transform duration-300 group-hover:text-white ${isServiceOpen ? "rotate-180 text-white" : ""
+                }`}
             />
+
+            {/* Multi-select Dropdown */}
+            {isServiceOpen && (
+              <div
+                role="listbox"
+                aria-multiselectable="true"
+                className="absolute left-0 right-0 top-full z-50 mt-1 max-h-60 overflow-y-auto border border-neutral-600 bg-typography-dark py-1.5 shadow-2xl"
+              >
+                {SERVICE_OPTIONS.map((option) => {
+                  const isChecked = selectedServices.includes(option);
+                  return (
+                    <div
+                      key={option}
+                      role="option"
+                      aria-selected={isChecked}
+                      onClick={() => toggleService(option)}
+                      className="flex cursor-pointer items-center gap-3 px-3.5 py-2 text-xs md:text-sm transition-colors duration-150 hover:bg-[#1A232C] select-none"
+                    >
+                      <div
+                        className={`flex size-4 shrink-0 items-center justify-center border transition-colors ${isChecked
+                          ? "border-primary bg-primary text-white"
+                          : "border-neutral-500 bg-transparent"
+                          }`}
+                      >
+                        {isChecked && <Check size={12} strokeWidth={3} className="text-white" />}
+                      </div>
+                      <span className={isChecked ? "text-white font-medium" : "text-neutral-300"}>
+                        {option}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Estimate Budget */}
+        {/* What's your estimated budget? */}
         <div>
           <label
             htmlFor="budget-select"
             className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
           >
-            Estimate Budget
+            What's your estimated budget? <span className="text-typography-light font-normal text-xs">(AUD)</span>
           </label>
           <div className="group relative mt-3">
             <select
               id="budget-select"
               value={budget}
               onChange={(e) => setBudget(e.target.value)}
-              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
-                budget ? "text-white" : "text-typography-light"
-              }`}
+              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${budget ? "text-white" : "text-typography-light"
+                }`}
             >
               <option value="" disabled className="bg-typography-dark text-typography-light text-sm md:text-base">
-                Select Budget
+                Select Budget (AUD)
               </option>
-              <option value="$1,000 - $5,000" className="bg-typography-dark text-white text-sm md:text-base">
-                $1,000 - $5,000
+              <option value="Under $500" className="bg-typography-dark text-white text-sm md:text-base">
+                Under $500
               </option>
-              <option value="$5,000 - $10,000" className="bg-typography-dark text-white text-sm md:text-base">
-                $5,000 - $10,000
+              <option value="$500–$1,000" className="bg-typography-dark text-white text-sm md:text-base">
+                $500–$1,000
               </option>
-              <option value="$10,000+" className="bg-typography-dark text-white text-sm md:text-base">
-                $10,000+
+              <option value="$1,000–$2,500" className="bg-typography-dark text-white text-sm md:text-base">
+                $1,000–$2,500
+              </option>
+              <option value="$2,500–$5,000" className="bg-typography-dark text-white text-sm md:text-base">
+                $2,500–$5,000
+              </option>
+              <option value="$5,000+" className="bg-typography-dark text-white text-sm md:text-base">
+                $5,000+
+              </option>
+              <option value="Not sure yet" className="bg-typography-dark text-white text-sm md:text-base">
+                Not sure yet
               </option>
             </select>
             <ChevronDown
