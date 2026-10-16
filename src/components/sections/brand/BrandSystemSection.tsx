@@ -100,7 +100,7 @@ export default function BrandSystemSection() {
           ))}
         </div>
 
-        <div className="mt-12 sm:mt-16 flex justify-center">
+        {/* <div className="mt-12 sm:mt-16 flex justify-center">
           <Button
             href="#contact"
             label="Download Full Portfolio"
@@ -109,7 +109,7 @@ export default function BrandSystemSection() {
             className="h-12 border border-white/20 hover:border-white"
             size="lg"
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );

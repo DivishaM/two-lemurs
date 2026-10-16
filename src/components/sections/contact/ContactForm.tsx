@@ -197,7 +197,7 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
             onClick={() => setIsServiceOpen((prev) => !prev)}
             className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white flex items-center h-5"
           >
-            What You Need <span className="text-red-500 ml-1">*</span>
+            What can we help you with? <span className="text-red-500 ml-1">*</span>
           </label>
           <div className="group relative mt-3">
             <div
