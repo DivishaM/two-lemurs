@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { Download } from 'lucide-react';
+// import { Download } from 'lucide-react';
 import { brandProjects } from '../../../data/brandProjects';
 import { BrandProjectCard } from './BrandProjectCard';
-import { Button } from '../../common/Button';
+// import { Button } from '../../common/Button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
