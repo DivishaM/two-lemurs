@@ -192,7 +192,7 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
         </div>
 
         {/* What You Need */}
-        <div ref={serviceDropdownRef} className="relative">
+        <div ref={serviceDropdownRef} className="relative flex flex-col justify-between">
           <label
             onClick={() => setIsServiceOpen((prev) => !prev)}
             className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
@@ -213,14 +213,14 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
                   setIsServiceOpen((prev) => !prev);
                 }
               }}
-              className="flex min-h-[38px] w-full cursor-pointer items-center justify-between border-b border-neutral-600 bg-transparent pb-2 pr-7 text-left transition-colors duration-300 hover:border-white focus:border-white focus:outline-none"
+              className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-600 bg-transparent pb-2 pr-6 text-left text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none"
             >
               {selectedServices.length === 0 ? (
                 <span className="text-sm md:text-base text-typography-light">
                   Select a service
                 </span>
               ) : (
-                <div className="flex flex-wrap items-center gap-1.5 py-0.5">
+                <div className="flex flex-wrap items-center gap-1.5">
                   {selectedServices.map((service) => (
                     <span
                       key={service}
@@ -246,8 +246,9 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
             </div>
             <ChevronDown
               size={16}
-              className={`pointer-events-none absolute right-0 top-2 text-typography-light transition-transform duration-300 group-hover:text-white ${isServiceOpen ? "rotate-180 text-white" : ""
-                }`}
+              className={`pointer-events-none absolute right-0 top-1 text-typography-light transition-transform duration-300 group-hover:text-white ${
+                isServiceOpen ? "rotate-180 text-white" : ""
+              }`}
             />
 
             {/* Multi-select Dropdown */}
@@ -268,10 +269,11 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
                       className="flex cursor-pointer items-center gap-3 px-3.5 py-2 text-xs md:text-sm transition-colors duration-150 hover:bg-[#1A232C] select-none"
                     >
                       <div
-                        className={`flex size-4 shrink-0 items-center justify-center border transition-colors ${isChecked
-                          ? "border-primary bg-primary text-white"
-                          : "border-neutral-500 bg-transparent"
-                          }`}
+                        className={`flex size-4 shrink-0 items-center justify-center border transition-colors ${
+                          isChecked
+                            ? "border-primary bg-primary text-white"
+                            : "border-neutral-500 bg-transparent"
+                        }`}
                       >
                         {isChecked && <Check size={12} strokeWidth={3} className="text-white" />}
                       </div>
@@ -287,7 +289,7 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
         </div>
 
         {/* What's your estimated budget? */}
-        <div>
+        <div className="flex flex-col justify-between">
           <label
             htmlFor="budget-select"
             className="cursor-pointer text-xs md:text-sm text-typography-offwhite avenir-400 opacity-90 transition-colors duration-200 hover:text-white"
@@ -299,8 +301,9 @@ export default function ContactForm({ onSubmitEnquiry }: ContactFormProps) {
               id="budget-select"
               value={budget}
               onChange={(e) => setBudget(e.target.value)}
-              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${budget ? "text-white" : "text-typography-light"
-                }`}
+              className={`w-full cursor-pointer appearance-none border-b border-neutral-600 bg-transparent pb-2 pr-6 text-sm md:text-base transition-colors duration-300 hover:border-white focus:border-white focus:outline-none ${
+                budget ? "text-white" : "text-typography-light"
+              }`}
             >
               <option value="" disabled className="bg-typography-dark text-typography-light text-sm md:text-base">
                 Select Budget (AUD)
