@@ -7,7 +7,7 @@ import ProcessSection from './components/sections/process/ProcessSection';
 import ServicesMarquee from './components/sections/marquee/ServicesMarquee';
 import FAQSection from './components/sections/faq/FAQSection';
 import ContactSection from './components/sections/contact/ContactSection';
-import InsightsSection from './components/sections/insights/InsightsSection';
+// import InsightsSection from './components/sections/insights/InsightsSection';
 import Footer from './components/layout/Footer';
 
 import { SmoothScrollProvider } from './context/SmoothScrollContext';
