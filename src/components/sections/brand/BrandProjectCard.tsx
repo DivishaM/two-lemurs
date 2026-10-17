@@ -188,9 +188,12 @@ export default function BrandProjectCard({
         <img
           ref={imgRef}
           src={project.image}
-          alt={project.title}
+          alt={`${project.title} - Brand Identity Design Case Study by Two Lemurs`}
+          width={856}
+          height={600}
           className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105 will-change-transform"
           loading="lazy"
+          decoding="async"
         />
 
         {/* Subtle dynamic sheen overlay on image hover */}

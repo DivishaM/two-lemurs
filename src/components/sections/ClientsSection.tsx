@@ -11,7 +11,7 @@ const marqueeClients = [...clients, ...clients, ...clients, ...clients];
 export default function ClientsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const wordsRef = useRef<HTMLSpanElement[]>([]);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const { lenis } = useSmoothScroll();
 
   useEffect(() => {
@@ -19,23 +19,25 @@ export default function ClientsSection() {
     if (isReduced) return;
 
     // Staggered words entrance for heading
-    const words = wordsRef.current.filter(Boolean);
-    if (words.length > 0 && sectionRef.current) {
-      gsap.fromTo(
-        words,
-        { yPercent: 120, opacity: 0 },
-        {
-          yPercent: 0,
-          opacity: 1,
-          duration: 0.9,
-          stagger: 0.05,
-          ease: 'power4.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 85%',
-          },
-        }
-      );
+    if (titleRef.current && sectionRef.current) {
+      const words = titleRef.current.querySelectorAll('.word-inner');
+      if (words.length > 0) {
+        gsap.fromTo(
+          words,
+          { yPercent: 120, opacity: 0 },
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.9,
+            stagger: 0.05,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 85%',
+            },
+          }
+        );
+      }
     }
 
     // Velocity-based Skew on scroll
@@ -60,7 +62,6 @@ export default function ClientsSection() {
     }
   }, [lenis]);
 
-  wordsRef.current = [];
   const words = ['Clients', 'We', 'Worked', 'For'];
 
   return (
@@ -68,15 +69,10 @@ export default function ClientsSection() {
       ref={sectionRef}
       className="bg-dark py-8 sm:py-0 sm:h-[240px] flex flex-col justify-center overflow-hidden"
     >
-      <h2 className="gothic-700 mb-8 sm:mb-7 text-center text-[28px] text-white">
+      <h2 ref={titleRef} className="gothic-700 mb-8 sm:mb-7 text-center text-[28px] text-white">
         {words.map((word, i) => (
           <span key={i} className="word-mask mr-[0.22em] last:mr-0 inline-block overflow-hidden">
-            <span
-              ref={(el) => {
-                if (el) wordsRef.current[i] = el;
-              }}
-              className="inline-block will-change-transform"
-            >
+            <span className="word-inner inline-block will-change-transform">
               {word}
             </span>
           </span>
@@ -101,7 +97,11 @@ export default function ClientsSection() {
             >
               <img
                 src={client.logo}
-                alt={client.name}
+                alt={`${client.name} logo - Client of Two Lemurs`}
+                width={142}
+                height={80}
+                loading="lazy"
+                decoding="async"
                 className="max-h-[38px] max-w-[84px] sm:max-h-[80px] sm:max-w-[142px] w-auto h-auto object-contain opacity-75 brightness-100 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:brightness-200"
               />
             </div>

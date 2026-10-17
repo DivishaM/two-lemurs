@@ -156,7 +156,7 @@ export default function HeroSection() {
         <div ref={bgMouseRef} className="w-full h-full will-change-transform">
           <img
             src="./images/hero-image.webp"
-            alt="Two Lemurs Hero Graphic"
+            alt="Two Lemurs - Strategic Branding, Web Design, and Digital Experiences Studio"
             width={1448}
             height={1086}
             className="h-full w-full object-cover object-right"
@@ -172,7 +172,7 @@ export default function HeroSection() {
         <img
           ref={mobileImgRef}
           src="./images/hero-image.webp"
-          alt="Two Lemurs Hero Graphic"
+          alt="Two Lemurs - Strategic Branding, Web Design, and Digital Experiences Studio"
           width={1448}
           height={1086}
           className="pointer-events-none h-full w-auto max-w-none object-contain -translate-x-[12%] sm:-translate-x-[10%] will-change-transform"

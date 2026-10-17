@@ -127,6 +127,9 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   if (href) {
+    const isExternal = target === '_blank' || href.startsWith('http');
+    const safeRel = rel || (isExternal ? 'noopener noreferrer' : undefined);
+
     return (
       <a
         ref={(el) => {
@@ -134,7 +137,9 @@ export const Button: React.FC<ButtonProps> = ({
         }}
         href={href}
         target={target}
-        rel={rel}
+        rel={safeRel}
+        title={label}
+        aria-label={label}
         onPointerDown={handlePointerDown}
         onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
         className={combinedClasses}

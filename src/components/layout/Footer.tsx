@@ -176,10 +176,12 @@ export default function Footer() {
         {/* Top Header Row: Logo & Socials */}
         <div ref={topRowRef} className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="footer-logo-group flex flex-col gap-3 will-change-transform">
-            <a href="/" title="logo" className="inline-block group">
+            <a href="/" title="Two Lemurs Home" className="inline-block group">
               <img
                 src="./assets/Logo.svg"
-                alt="Two Lemurs"
+                alt="Two Lemurs - Strategic Branding & Digital Experiences Logo"
+                width={150}
+                height={32}
                 className="h-8 w-auto brightness-0 invert md:w-auto w-[150px] transition-transform duration-300 group-hover:scale-105"
               />
             </a>
@@ -201,7 +203,10 @@ export default function Footer() {
               >
                 <img
                   src={social.icon}
-                  alt={social.name}
+                  alt={`${social.name} icon`}
+                  width={16}
+                  height={16}
+                  loading="lazy"
                   className="size-4 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
                 />
               </a>
@@ -223,9 +228,9 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="will-change-transform">
-            <h4 className="avenir-600 text-base text-white mb-4">
+            <h3 className="avenir-600 text-base text-white mb-4">
               Quick Links
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm avenir-500 text-slate-400">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -248,9 +253,9 @@ export default function Footer() {
 
           {/* Column 3: Services */}
           <div className="will-change-transform">
-            <h4 className="avenir-600 text-base text-white mb-4">
+            <h3 className="avenir-600 text-base text-white mb-4">
               Services
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm avenir-500 text-slate-400">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
@@ -273,9 +278,9 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div className="col-span-2 lg:col-span-1 will-change-transform">
-            <h4 className="avenir-600 text-base text-white mb-4">
+            <h3 className="avenir-600 text-base text-white mb-4">
               Contact
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm avenir-500 text-slate-400">
               <li>
                 <a

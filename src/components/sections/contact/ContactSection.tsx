@@ -139,9 +139,9 @@ export default function ContactSection() {
           </p>
 
           <div ref={directRef} className="lg:mt-16 mt-8">
-            <p className="text-sm font-medium text-white md:text-lg avenir-400">
+            <h3 className="text-sm font-medium text-white md:text-lg avenir-400">
               Prefer speaking with our team directly?
-            </p>
+            </h3>
 
             <div className="mt-5 flex flex-wrap lg:gap-6 gap-3">
               <a

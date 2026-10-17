@@ -11,9 +11,12 @@ export default function InsightCard({ insight }: InsightCardProps) {
       <div className="overflow-hidden">
         <img
           src={insight.image}
-          alt={insight.title}
+          alt={`${insight.title} - Insight Article by Two Lemurs`}
+          width={400}
+          height={250}
           className="insight-card-img w-full object-contain transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105 will-change-transform"
           loading="lazy"
+          decoding="async"
         />
       </div>
 

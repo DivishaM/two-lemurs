@@ -138,10 +138,12 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between">
         {/* Brand Logo with smooth scale and positioning */}
-        <a ref={logoRef} href="/" title="logo" className="flex-shrink-0 group">
+        <a ref={logoRef} href="/" title="Two Lemurs Home" className="flex-shrink-0 group">
           <img
             src="./assets/Logo.svg"
-            alt="Two Lemurs"
+            alt="Two Lemurs - Strategic Branding & Digital Experiences Logo"
+            width={150}
+            height={22}
             className={`h-[22px] w-auto md:h-auto transition-all duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
               isScrolled ? 'scale-90 md:scale-[0.92]' : 'scale-100'
             } group-hover:scale-105`}
