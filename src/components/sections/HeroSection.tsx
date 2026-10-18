@@ -147,13 +147,13 @@ export default function HeroSection() {
   const words = headline.split(" ");
 
   return (
-    <section ref={heroRef} className="relative flex flex-col overflow-hidden bg-gray-50 xl:min-h-screen">
+    <section ref={heroRef} className="relative flex flex-col overflow-hidden bg-gray-50 lg:min-h-[860px]">
       {/* Desktop Hero Image with 2-tier independent parallax (100% flicker-free) */}
       <div
         ref={bgScrollRef}
-        className="pointer-events-none absolute -inset-y-8 inset-x-0 z-0 hidden xl:block select-none will-change-transform"
+        className="pointer-events-none absolute inset-0 z-0 hidden lg:block select-none will-change-transform"
       >
-        <div ref={bgMouseRef} className="w-full h-full will-change-transform">
+        <div ref={bgMouseRef} className="w-full h-full will-change-transform lg:translate-y-6 xl:translate-y-8">
           <img
             src="./images/hero-image.webp"
             alt="Two Lemurs - Strategic Branding, Web Design, and Digital Experiences Studio"
@@ -168,26 +168,28 @@ export default function HeroSection() {
       </div>
 
       {/* Mobile & Tablet Hero Image with smooth Ken Burns entrance */}
-      <div className="relative flex h-[48vh] sm:h-[70vh] w-full items-center justify-center overflow-hidden xl:hidden pt-4 sm:pt-6 select-none">
-        <img
-          ref={mobileImgRef}
-          src="./images/hero-image.webp"
-          alt="Two Lemurs - Strategic Branding, Web Design, and Digital Experiences Studio"
-          width={1448}
-          height={1086}
-          className="pointer-events-none h-full w-auto max-w-none object-contain -translate-x-[12%] sm:-translate-x-[10%] will-change-transform"
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
+      <div className="relative flex h-[48vh] sm:h-[70vh] min-h-[280px] sm:min-h-[480px] w-full items-center justify-center overflow-hidden lg:hidden pt-4 sm:pt-6 select-none">
+        <div className="h-full w-auto flex items-center justify-center -translate-x-14 sm:-translate-x-[10%] will-change-transform">
+          <img
+            ref={mobileImgRef}
+            src="./images/hero-image.webp"
+            alt="Two Lemurs - Strategic Branding, Web Design, and Digital Experiences Studio"
+            width={1448}
+            height={1086}
+            className="pointer-events-none h-full w-auto max-w-none object-contain will-change-transform"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-0 sm:px-6 xl:px-8 mt-auto pb-9 sm:pb-12 xl:pb-20 pt-2 sm:pt-8 xl:pt-36">
-        <div className="hero-text-content flex w-full max-w-[640px] flex-col gap-[18px] md:gap-8 will-change-transform">
+      <div className="container relative z-10 mx-auto px-0 sm:px-6 lg:px-8 mt-auto pb-9 sm:pb-12 lg:pb-16 xl:pb-20 pt-2 sm:pt-8 lg:pt-28 xl:pt-36">
+        <div className="hero-text-content flex w-full max-w-[640px] lg:max-w-[540px] xl:max-w-[640px] flex-col gap-[18px] md:gap-8 will-change-transform">
           {/* Headline with smooth word-by-word reveal */}
           <h1
             ref={titleRef}
-            className="gothic-800 text-[32px] leading-[40px] sm:text-4xl md:text-5xl lg:text-[56px] sm:leading-tight lg:leading-[64px] tracking-tight text-typography-main"
+            className="gothic-800 text-[32px] leading-[40px] sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[56px] sm:leading-tight lg:leading-[56px] xl:leading-[64px] tracking-tight text-typography-main"
           >
             {words.map((word, index) => (
               <span key={index} className="word-mask mr-[0.24em] last:mr-0">
@@ -198,7 +200,7 @@ export default function HeroSection() {
 
           <p
             ref={subtitleRef}
-            className="text-sm leading-[20px] md:text-xl md:leading-7 text-slate-700 avenir-500"
+            className="text-sm leading-[20px] md:text-xl md:leading-7 text-slate-700 avenir-500 lg:max-w-[440px] xl:max-w-[500px]"
           >
             We turn ideas into practical solutions across branding, websites
             and digital products – combining strategy, design and technology.

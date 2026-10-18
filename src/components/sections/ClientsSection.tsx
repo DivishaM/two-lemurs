@@ -88,6 +88,7 @@ export default function ClientsSection() {
 
         <div
           ref={trackRef}
+          style={{ animationDuration: '125s' }}
           className="flex w-max animate-marquee gap-2.5 sm:gap-3 transition-transform will-change-transform hover:[animation-play-state:paused]"
         >
           {marqueeClients.map((client, index) => (
