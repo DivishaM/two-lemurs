@@ -23,7 +23,7 @@ export const brandProjects: BrandProject[] = [
     tagline: 'Professional Care. Personal Trust.',
     description:
       'A modern healthcare brand identity designed to communicate trust, professionalism and personal care. A welcoming visual approach and consistent brand presence express My Private Pharmacist’s commitment to accessible, discreet and reliable healthcare, helping people feel reassured and confident about taking the next step towards personalised support.',
-    image: '/images/pharmacist.png',
+    image: '/images/pharmacist.webp',
     link: 'https://www.myprivatepharmacist.co.uk/',
   },
   {
