@@ -39,15 +39,15 @@ export default function BrandProjectCard({
         },
       });
 
-      // 1. Image Cinematic Entrance (Clean fade-in without cropping)
+      // 1. Image Cinematic Scale-In Entrance
       if (imgRef.current) {
         tl.fromTo(
           imgRef.current,
-          { opacity: 0, y: 12 },
+          { scale: 1.15, opacity: 0.75 },
           {
+            scale: 1,
             opacity: 1,
-            y: 0,
-            duration: 1.0,
+            duration: 1.2,
             ease: 'power2.out',
           },
           0
@@ -132,14 +132,18 @@ export default function BrandProjectCard({
         );
       }
 
-      // 6. Interactive Mouse Depth Parallax for Content
+      // 6. Interactive Mouse Depth Parallax for Image & Content
       if (
         window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
-        cardRef.current
+        cardRef.current &&
+        imgRef.current
       ) {
         const card = cardRef.current;
+        const img = imgRef.current;
         const content = contentColRef.current;
 
+        const qImgX = gsap.quickTo(img, 'x', { duration: 0.8, ease: 'power2.out' });
+        const qImgY = gsap.quickTo(img, 'y', { duration: 0.8, ease: 'power2.out' });
         const qContentX = content
           ? gsap.quickTo(content, 'x', { duration: 1.0, ease: 'power3.out' })
           : null;
@@ -152,6 +156,9 @@ export default function BrandProjectCard({
           const x = (e.clientX - rect.left) / rect.width - 0.5;
           const y = (e.clientY - rect.top) / rect.height - 0.5;
 
+          qImgX(x * 16);
+          qImgY(y * 12);
+
           if (qContentX && qContentY) {
             qContentX(-x * 8);
             qContentY(-y * 6);
@@ -159,6 +166,8 @@ export default function BrandProjectCard({
         };
 
         const handleMouseLeave = () => {
+          qImgX(0);
+          qImgY(0);
           if (qContentX && qContentY) {
             qContentX(0);
             qContentY(0);
@@ -183,13 +192,14 @@ export default function BrandProjectCard({
   return (
     <div
       ref={cardRef}
-      className={`group sticky top-20 lg:top-[76px] xl:top-28 border border-white/10 bg-dark-card p-3 sm:p-5 lg:p-[18px] xl:p-[20px] flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-        } items-stretch gap-4 sm:gap-6 lg:gap-4 xl:gap-5 shadow-2xl transition-all duration-400 w-full mx-auto hover:border-white/20 brand-project-sticky-card min-h-0`}
+      className={`group sticky top-20 lg:top-[76px] xl:top-28 border border-white/10 bg-dark-card p-3 sm:p-5 lg:p-[18px] xl:p-[20px] flex flex-col ${
+        isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
+      } items-stretch gap-4 sm:gap-6 lg:gap-4 xl:gap-5 shadow-2xl transition-all duration-400 w-full mx-auto hover:border-white/20 brand-project-sticky-card min-h-0`}
     >
-      {/* Project Showcase Image - Full resolution, 16:9 uncropped and unstretched */}
+      {/* Project Showcase Image with Ken Burns entrance, hover zoom, and mouse parallax */}
       <div
         ref={imgWrapperRef}
-        className="brand-card-img-wrapper w-full lg:w-[68%] xl:w-[70%] aspect-[16/9] flex items-center justify-center overflow-hidden flex-shrink-0 relative select-none cursor-pointer min-h-0 self-center"
+        className="brand-card-img-wrapper w-full lg:w-[68%] xl:w-[70%] aspect-[16/9] flex items-center justify-center overflow-hidden flex-shrink-0 relative select-none cursor-pointer min-h-0"
       >
         <img
           ref={imgRef}
@@ -197,8 +207,8 @@ export default function BrandProjectCard({
           alt={`${project.title} - Brand Identity Design Case Study by Two Lemurs`}
           width={1920}
           height={1080}
-          className="w-full h-full object-contain block transition-opacity duration-300 will-change-transform"
-          loading={index === 0 ? 'eager' : 'lazy'}
+          className="w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105 will-change-transform"
+          loading="lazy"
           decoding="async"
         />
 

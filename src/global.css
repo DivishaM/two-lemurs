@@ -302,27 +302,6 @@ html.lenis body {
   max-height: calc(100dvh - 5.5rem);
 }
 
-.brand-project-sticky-card .brand-card-img-wrapper {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-}
-
-@media screen and (min-width: 1024px) {
-  .brand-project-sticky-card .brand-card-img-wrapper {
-    width: auto;
-    height: auto;
-    max-width: 68%;
-    max-height: 100%;
-    align-self: center;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .brand-project-sticky-card .brand-card-img-wrapper {
-    max-width: 70%;
-  }
-}
-
 @media screen and (max-height: 850px) {
   .brand-project-sticky-card {
     top: 76px !important;
@@ -333,7 +312,6 @@ html.lenis body {
 
   .brand-project-sticky-card .brand-card-img-wrapper {
     max-height: calc(100dvh - 7.5rem);
-    max-width: calc((100dvh - 7.5rem) * 16 / 9);
   }
 
   .brand-project-sticky-card .brand-card-content {
@@ -351,7 +329,6 @@ html.lenis body {
 
   .brand-project-sticky-card .brand-card-img-wrapper {
     max-height: calc(100dvh - 6.5rem);
-    max-width: calc((100dvh - 6.5rem) * 16 / 9);
   }
 
   .brand-project-sticky-card .brand-card-content {
@@ -380,7 +357,6 @@ html.lenis body {
 
   .brand-project-sticky-card .brand-card-img-wrapper {
     max-height: calc(100dvh - 5.75rem);
-    max-width: calc((100dvh - 5.75rem) * 16 / 9);
   }
 
   .brand-project-sticky-card .brand-card-content {
