@@ -147,11 +147,11 @@ export default function HeroSection() {
   const words = headline.split(" ");
 
   return (
-    <section ref={heroRef} className="relative flex flex-col overflow-hidden bg-gray-50 lg:min-h-[860px]">
+    <section ref={heroRef} className="relative flex flex-col overflow-hidden bg-gray-50 custom-1100:min-h-screen">
       {/* Desktop Hero Image with 2-tier independent parallax (100% flicker-free) */}
       <div
         ref={bgScrollRef}
-        className="pointer-events-none absolute inset-0 z-0 hidden lg:block select-none will-change-transform"
+        className="absolute lg:inset-0 z-0 hidden custom-1100:block select-none will-change-transform"
       >
         <div ref={bgMouseRef} className="w-full h-full will-change-transform lg:translate-y-6 xl:translate-y-8">
           <img
@@ -168,15 +168,15 @@ export default function HeroSection() {
       </div>
 
       {/* Mobile & Tablet Hero Image with smooth Ken Burns entrance */}
-      <div className="relative flex h-[48vh] sm:h-[70vh] min-h-[280px] sm:min-h-[480px] w-full items-center justify-center overflow-hidden lg:hidden pt-4 sm:pt-6 select-none">
-        <div className="h-full w-auto flex items-center justify-center -translate-x-14 sm:-translate-x-[10%] will-change-transform">
+      <div className="flex w-full items-center justify-center overflow-hidden custom-1100:hidden pt-4 sm:pt-6 select-none">
+        <div className="flex items-center justify-center will-change-transform w-full">
           <img
             ref={mobileImgRef}
-            src="./images/hero-image.webp"
+            src="./images/hero-bg-mobile.png"
             alt="Two Lemurs - Strategic Branding, Web Design, and Digital Experiences Studio"
             width={1448}
             height={1086}
-            className="pointer-events-none h-full w-auto max-w-none object-contain will-change-transform"
+            className="pointer-events-none max-w-none sm:w-[85%] w-full h-auto object-contain will-change-transform"
             loading="eager"
             decoding="async"
             fetchPriority="high"
@@ -184,7 +184,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-0 sm:px-6 lg:px-8 mt-auto pb-9 sm:pb-12 lg:pb-16 xl:pb-20 pt-2 sm:pt-8 lg:pt-28 xl:pt-36">
+      <div className="container relative z-10 mx-auto mt-auto pb-9 sm:pb-12 lg:pb-16 xl:pb-20 pt-2 sm:pt-8 lg:pt-28 xl:pt-36">
         <div className="hero-text-content flex w-full max-w-[640px] lg:max-w-[540px] xl:max-w-[640px] flex-col gap-[18px] md:gap-8 will-change-transform">
           {/* Headline with smooth word-by-word reveal */}
           <h1
@@ -200,7 +200,7 @@ export default function HeroSection() {
 
           <p
             ref={subtitleRef}
-            className="text-sm leading-[20px] md:text-xl md:leading-7 text-slate-700 avenir-500 lg:max-w-[440px] xl:max-w-[500px]"
+            className="text-sm leading-[20px] md:text-xl md:leading-7 text-slate-700 avenir-500 custom-1100:max-w-[440px] xl:max-w-[500px]"
           >
             We turn ideas into practical solutions across branding, websites
             and digital products – combining strategy, design and technology.
