@@ -14,7 +14,7 @@ export const brandProjects: BrandProject[] = [
     tagline: 'Workplace Hydration. Clear Confidence.',
     description:
       'A modern brand identity designed to position Hydrate HQ as a dependable workplace water solutions provider. A clear, confident visual approach makes the service feel accessible and professional, creating a consistent brand presence that supports recognition and helps businesses feel assured when choosing their water solutions partner.',
-    image: '/images/Hydrate.webp',
+    image: '/images/hydrate.webp',
     link: 'https://www.hydratehq.com/',
   },
   {
@@ -23,7 +23,7 @@ export const brandProjects: BrandProject[] = [
     tagline: 'Professional Care. Personal Trust.',
     description:
       'A modern healthcare brand identity designed to communicate trust, professionalism and personal care. A welcoming visual approach and consistent brand presence express My Private Pharmacist’s commitment to accessible, discreet and reliable healthcare, helping people feel reassured and confident about taking the next step towards personalised support.',
-    image: '/images/Pharmacist.webp',
+    image: '/images/pharmacist.png',
     link: 'https://www.myprivatepharmacist.co.uk/',
   },
   {
