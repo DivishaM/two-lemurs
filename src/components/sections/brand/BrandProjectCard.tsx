@@ -232,7 +232,7 @@ export default function BrandProjectCard({
           {/* Preserved Original Continuous Paragraph Structure */}
           <p
             ref={descRef}
-            className="brand-card-desc avenir-500 text-xs sm:text-sm lg:text-[15px] xl:text-base text-slate-600 leading-relaxed mt-2.5 sm:mt-3.5 xl:mt-4 will-change-transform"
+            className="brand-card-desc avenir-500 text-sm sm:text-sm lg:text-[16px] xl:text-base text-slate-600 leading-relaxed mt-2.5 sm:mt-3.5 xl:mt-4 will-change-transform"
           >
             {project.description}
           </p>
