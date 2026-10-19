@@ -22,6 +22,7 @@ export default function BrandProjectCard({
   const imgRef = useRef<HTMLImageElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const dotRef = useRef<HTMLSpanElement>(null);
+  const taglineRef = useRef<HTMLParagraphElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const btnRef = useRef<HTMLDivElement>(null);
   const contentColRef = useRef<HTMLDivElement>(null);
@@ -46,7 +47,7 @@ export default function BrandProjectCard({
           {
             scale: 1,
             opacity: 1,
-            duration: 1.25,
+            duration: 1.2,
             ease: 'power2.out',
           },
           0
@@ -86,6 +87,21 @@ export default function BrandProjectCard({
         );
       }
 
+      // 3.5. Tagline Fade-Up
+      if (taglineRef.current) {
+        tl.fromTo(
+          taglineRef.current,
+          { y: 16, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+          },
+          0.18
+        );
+      }
+
       // 4. Description Paragraph Fade-Up
       if (descRef.current) {
         tl.fromTo(
@@ -97,7 +113,7 @@ export default function BrandProjectCard({
             duration: 0.85,
             ease: 'power3.out',
           },
-          0.22
+          0.24
         );
       }
 
@@ -183,15 +199,15 @@ export default function BrandProjectCard({
       {/* Project Showcase Image with Ken Burns entrance, hover zoom, and mouse parallax */}
       <div
         ref={imgWrapperRef}
-        className="brand-card-img-wrapper w-full lg:w-[68%] xl:w-[70%] aspect-[856/600] max-h-[42vh] lg:max-h-[calc(100vh-8.5rem)] lg:max-h-[calc(100dvh-8.5rem)] flex items-center justify-center overflow-hidden bg-black/30 flex-shrink-0 relative select-none cursor-pointer min-h-0"
+        className="brand-card-img-wrapper w-full lg:w-[68%] xl:w-[70%] aspect-[16/9] flex items-center justify-center overflow-hidden flex-shrink-0 relative select-none cursor-pointer min-h-0"
       >
         <img
           ref={imgRef}
           src={project.image}
           alt={`${project.title} - Brand Identity Design Case Study by Two Lemurs`}
-          width={856}
-          height={600}
-          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105 will-change-transform"
+          width={1920}
+          height={1080}
+          className="w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105 will-change-transform"
           loading="lazy"
           decoding="async"
         />
@@ -209,7 +225,7 @@ export default function BrandProjectCard({
           {/* Headline with single entrance reveal animation on scroll, no repetitive hover flashing */}
           <h3
             ref={titleRef}
-            className="avenir-600 text-lg sm:text-xl xl:text-2xl text-typography-main tracking-tight cursor-default"
+            className="avenir-600 text-xl sm:text-xl xl:text-2xl text-typography-main tracking-tight cursor-default"
           >
             {titleWords.map((word, i) => (
               <span
@@ -229,6 +245,14 @@ export default function BrandProjectCard({
             />
           </h3>
 
+          {/* Tagline */}
+          <p
+            ref={taglineRef}
+            className="brand-card-tagline avenir-600 text-base sm:text-base lg:text-[18px] text-slate-800 tracking-tight mt-1.5 sm:mt-2 xl:mt-2.5 will-change-transform cursor-default"
+          >
+            {project.tagline}
+          </p>
+
           {/* Preserved Original Continuous Paragraph Structure */}
           <p
             ref={descRef}
@@ -244,8 +268,10 @@ export default function BrandProjectCard({
           className="brand-card-btn avenir-500 mt-4 sm:mt-6 xl:mt-8 pt-2 sm:pt-3 xl:pt-4 will-change-transform transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:-translate-y-1 flex-shrink-0"
         >
           <Button
-            href="#contact"
-            label="View live project"
+            href={project.link || '#contact'}
+            target={project.link ? '_blank' : undefined}
+            rel={project.link ? 'noopener noreferrer' : undefined}
+            label="View Live Project"
             variant="dark"
             icon="arrow-up-right"
             size="md"
