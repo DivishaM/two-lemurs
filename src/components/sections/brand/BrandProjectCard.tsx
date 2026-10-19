@@ -95,7 +95,7 @@ export default function BrandProjectCard({
           {
             y: 0,
             opacity: 1,
-            duration: 0.85,
+            duration: 1.2,
             ease: 'power3.out',
           },
           0.18
@@ -110,7 +110,7 @@ export default function BrandProjectCard({
           {
             y: 0,
             opacity: 1,
-            duration: 0.85,
+            duration: 1.2,
             ease: 'power3.out',
           },
           0.24
