@@ -172,7 +172,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-typography-dark text-white relative overflow-hidden before:content-[''] before:absolute before:top-[25%] before:left-[-50%] before:bg-[#00163C] before:pointer-events-none before:h-[60%] before:w-[50%] before:rounded-full before:blur-[200px] after:content-[''] after:absolute after:top-[30%] after:right-[-50%] after:bg-[#00163C] after:pointer-events-none after:h-[60%] after:w-[50%] after:rounded-full after:blur-[200px]">
+    <footer ref={footerRef} className="bg-typography-dark text-white relative overflow-hidden before:content-[''] before:absolute before:top-[25%] before:left-[-40%] before:bg-[#00163C] before:pointer-events-none before:h-[60%] before:w-[50%] before:rounded-full before:blur-[120px] after:content-[''] after:absolute after:top-[30%] after:right-[-40%] after:bg-[#00163C] after:pointer-events-none after:h-[60%] after:w-[50%] after:rounded-full after:blur-[120px]">
       <div className="container">
         {/* Top Header Row: Logo & Socials */}
         <div ref={topRowRef} className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -200,7 +200,7 @@ export default function Footer() {
                 href={social.href}
                 aria-label={social.name}
                 title={social.name}
-                className="footer-social-btn group flex size-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:-translate-y-1 will-change-transform"
+                className="footer-social-btn group flex size-12 items-center justify-center border border-white/10 transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:-translate-y-1 will-change-transform"
               >
                 <img
                   src={social.icon}
@@ -208,7 +208,7 @@ export default function Footer() {
                   width={16}
                   height={16}
                   loading="lazy"
-                  className="size-4 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
+                  className="size-6 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110"
                 />
               </a>
             ))}
