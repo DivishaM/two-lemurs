@@ -32,6 +32,7 @@ export default function Footer() {
   const gridColsRef = useRef<HTMLDivElement>(null);
   const legalRowRef = useRef<HTMLDivElement>(null);
   const logoWrapperRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -171,7 +172,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-typography-dark text-white  overflow-hidden relative">
+    <footer ref={footerRef} className="bg-typography-dark text-white relative overflow-hidden before:content-[''] before:absolute before:top-[25%] before:left-[-50%] before:bg-[#00163C] before:pointer-events-none before:h-[60%] before:w-[50%] before:rounded-full before:blur-[200px] after:content-[''] after:absolute after:top-[30%] after:right-[-50%] after:bg-[#00163C] after:pointer-events-none after:h-[60%] after:w-[50%] after:rounded-full after:blur-[200px]">
       <div className="container">
         {/* Top Header Row: Logo & Socials */}
         <div ref={topRowRef} className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -365,12 +366,16 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Giant Bottom Brand Logo: Slower, majestic bottom-to-top reveal with word stagger */}
+        {/* Giant Bottom Brand Logo: Stretches across the full width using span text */}
         <div
           ref={logoWrapperRef}
-          className="mt-8 sm:mt-12 flex justify-center items-center overflow-hidden pointer-events-none select-none -mb-1 sm:-mb-4"
+          className="mt-8 sm:mt-12 w-full overflow-hidden pointer-events-none select-none flex justify-center -mb-1 sm:-mb-4"
         >
-          <div className="gothic-800 text-[clamp(3.5rem,15vw,250px)] leading-none sm:leading-[0.88] text-white whitespace-nowrap text-center flex gap-[0.24em]">
+          <div
+            ref={textRef}
+            className="gothic-800 leading-none sm:leading-[0.88] text-white whitespace-nowrap inline-flex items-baseline gap-[0.14em] tracking-[-0.035em] font-black"
+            style={{ fontSize: '16vw' }}
+          >
             <span className="footer-big-word inline-block will-change-transform">Two</span>
             <span className="footer-big-word inline-block will-change-transform">Lemurs</span>
           </div>

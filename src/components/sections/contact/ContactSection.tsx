@@ -100,7 +100,7 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="contact"
-      className="bg-typography-dark py-12 md:py-20 xl:py-32 text-white"
+      className="bg-typography-dark py-12 md:py-20 xl:py-32 text-white relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-[-50%] before:bg-[#00163C] before:pointer-events-none before:h-[60%] before:w-[50%] before:rounded-full before:blur-[200px] after:content-[''] after:absolute after:top-0 after:right-[-50%] after:bg-[#00163C] after:pointer-events-none after:h-[60%] after:w-[50%] after:rounded-full after:blur-[200px]"
     >
       <div className="container grid grid-cols-1 md:grid-cols-2 2xl:gap-16 gap-8">
         {/* Left Content */}
